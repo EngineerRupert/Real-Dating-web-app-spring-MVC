@@ -19,4 +19,9 @@ public class TestClassTest {
         assertEquals(5, new TestClass().bubbleSort().length);
     }
 
+    @Test
+    public void testArrayToString() {
+        assertEquals("-901424", new TestClass().arrayToString(new TestClass().bubbleSort()));
+    }
+
 }

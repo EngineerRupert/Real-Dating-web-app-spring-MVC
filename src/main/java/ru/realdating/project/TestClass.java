@@ -17,4 +17,12 @@ public class TestClass {
         return array;
     }
 
+    public String arrayToString(int[] array) {
+        String string = "";
+        for (int i = 0; i < array.length; i++) {
+            string += String.valueOf(array[i]);
+        }
+        return string;
+    }
+
 }
