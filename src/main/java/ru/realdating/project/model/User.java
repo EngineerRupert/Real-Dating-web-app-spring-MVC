@@ -20,7 +20,6 @@ public class User {
     private Group group;
 
     public User() {
-        super();
     }
 
     public User(String login, String password) {

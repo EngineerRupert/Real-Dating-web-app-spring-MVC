@@ -24,7 +24,7 @@ public class UserCard {
     @Column (columnDefinition="TEXT")
     private String interests;
 
-    @Column (length = 10, nullable = false)
+    @Column (nullable = false)
     private int age;
 
     @Column (length = 20, nullable = false)
