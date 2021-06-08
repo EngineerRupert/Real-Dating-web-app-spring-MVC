@@ -30,8 +30,20 @@ public class UserDao {
 
     public User findUserByLogin(String login) {
         try {
-            return entityManager.createQuery("from User where login = :loginForSearch", User.class)
+            return entityManager.createQuery("select u from User u where u.login = :loginForSearch", User.class)
                     .setParameter("loginForSearch", login)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
+
+    public User findUserByLoginAndPassword(String login, String password) {
+        try {
+            return entityManager.createQuery("select u from User u " +
+                    "where u.login = :loginForSearch and u.password = :passwordForSearch", User.class)
+                    .setParameter("loginForSearch", login)
+                    .setParameter("passwordForSearch", password)
                     .getSingleResult();
         } catch (NoResultException e) {
             return null;
