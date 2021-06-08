@@ -32,7 +32,6 @@ public class UserDaoTest {
         if (entityManagerFactory != null) {
             entityManagerFactory.close();
         }
-
     }
 
     @Test
