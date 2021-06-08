@@ -1,10 +1,13 @@
 package ru.realdating.project.model;
 
+import org.junit.Assert;
 import org.junit.Test;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+
+import static org.junit.Assert.*;
 
 public class TestUser {
 
@@ -17,6 +20,15 @@ public class TestUser {
         entityManager.getTransaction().begin();
         entityManager.persist(user);
         entityManager.getTransaction().commit();
+
+        User foundUser = entityManager.find(User.class, 1);
+        assertNotNull(foundUser);
+
+        User findByQuery = entityManager.createQuery("select u from User u where u.id = :id", User.class)
+                .setParameter("id", user.getId())
+                .getSingleResult();
+
+        assertNotNull(findByQuery);
 
         entityManager.close();
         factory.close();
