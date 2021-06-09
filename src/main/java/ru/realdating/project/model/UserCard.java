@@ -24,10 +24,10 @@ public class UserCard {
     @Column (columnDefinition="TEXT")
     private String interests;
 
-    @Column (nullable = false)
+    @Column ()
     private int age;
 
-    @Column (length = 20, nullable = false)
+    @Column (length = 20)
     private String gender;
 
     @Column (length = 50)

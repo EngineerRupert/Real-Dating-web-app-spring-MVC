@@ -4,6 +4,7 @@ import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 
 import javax.persistence.EntityManager;
+import javax.persistence.NoResultException;
 
 public class UserCardDao {
 
@@ -13,15 +14,31 @@ public class UserCardDao {
         this.entityManager = entityManager;
     }
 
-    public UserCard createMainInfoUser(User user, String aboutMe, String interests, int age, String gender, String status) {
-        UserCard userCard = new UserCard();
-        userCard.setAboutMe(aboutMe);
-        userCard.setInterests(interests);
-        userCard.setAge(age);
-        userCard.setGender(gender);
-        userCard.setStatus(status);
-        userCard.setUserId(user);
+    public UserCard findUserCard(int id) {
+        try {
+            return entityManager.createQuery("from UserCard u where u.userId.id = :userId", UserCard.class)
+                    .setParameter("userId", id)
+                    .getSingleResult();
+        } catch (NoResultException e) {
+            return null;
+        }
+    }
 
+    public UserCard createUserCard(User user) {
+        UserCard userCard = new UserCard();
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.persist(userCard);
+            userCard.setUserId(user);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+        return userCard;
+    }
+
+    public UserCard refreshMainInfoUserCard(UserCard userCard) {
         entityManager.getTransaction().begin();
         try {
             entityManager.persist(userCard);
