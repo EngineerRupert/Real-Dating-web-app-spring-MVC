@@ -85,9 +85,11 @@ public class UserCardDaoTest {
         User user = userDao.createUser("admin","admin");
         userCardDao.createUserCard(user);
         UserCard userCard = userCardDao.findUserCard(user.getId());
+        userCardDao.addLike(userCard);
+        userCardDao.addLike(userCard);
         UserCard finalUserCard = userCardDao.addLike(userCard);
 
-        assertEquals(1, finalUserCard.getLikeUserCard());
+        assertEquals(3, finalUserCard.getLikeUserCard());
     }
 
 }

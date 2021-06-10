@@ -51,7 +51,7 @@ public class UserCardDao {
     }
 
     public UserCard addLike(UserCard userCard) {
-        userCard.setLikeUserCard(+1);
+        userCard.setLikeUserCard(userCard.getLikeUserCard()+1);
         entityManager.getTransaction().begin();
         try {
             entityManager.persist(userCard);
