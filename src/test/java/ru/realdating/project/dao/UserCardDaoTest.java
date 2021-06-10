@@ -60,9 +60,7 @@ public class UserCardDaoTest {
     @Test
     public void refreshMainInfoUserCard() {
         User user = userDao.createUser("admin","admin");
-
         userCardDao.createUserCard(user);
-
         UserCard userCard = userCardDao.findUserCard(user.getId());
 
         userCard.setAboutMe("aboutMe");
@@ -80,6 +78,16 @@ public class UserCardDaoTest {
         assertEquals(userCard.getGender(), refreshedUserCard.getGender());
         assertEquals(userCard.getStatus(), refreshedUserCard.getStatus());
         assertEquals(userCard.getUserId().getId(), refreshedUserCard.getUserId().getId());
+    }
+
+    @Test
+    public void addLike() {
+        User user = userDao.createUser("admin","admin");
+        userCardDao.createUserCard(user);
+        UserCard userCard = userCardDao.findUserCard(user.getId());
+        UserCard finalUserCard = userCardDao.addLike(userCard);
+
+        assertEquals(1, finalUserCard.getLikeUserCard());
     }
 
 }

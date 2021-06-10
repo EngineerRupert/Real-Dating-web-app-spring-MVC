@@ -50,4 +50,17 @@ public class UserCardDao {
         return userCard;
     }
 
+    public UserCard addLike(UserCard userCard) {
+        userCard.setLikeUserCard(+1);
+        entityManager.getTransaction().begin();
+        try {
+            entityManager.persist(userCard);
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw e;
+        }
+        return userCard;
+    }
+
 }
