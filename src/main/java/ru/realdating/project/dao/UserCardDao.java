@@ -1,15 +1,19 @@
 package ru.realdating.project.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+@Repository
 public class UserCardDao {
 
     private final EntityManager entityManager;
 
+    @Autowired
     public UserCardDao(EntityManager entityManager) {
         this.entityManager = entityManager;
     }

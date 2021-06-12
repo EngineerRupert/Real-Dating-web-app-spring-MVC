@@ -13,7 +13,7 @@ public class TestUser {
 
     @Test
     public void createUserTest() {
-        EntityManagerFactory factory = Persistence.createEntityManagerFactory("PersistenceUnit");
+        EntityManagerFactory factory = Persistence.createEntityManagerFactory("TestPersistenceUnit");
         EntityManager entityManager = factory.createEntityManager();
 
         User user = new User("admin", "admin");

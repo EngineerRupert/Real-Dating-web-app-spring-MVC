@@ -1,42 +1,33 @@
 package ru.realdating.project.dao;
 
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.test.annotation.DirtiesContext;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import ru.realdating.project.TestConfig;
+import ru.realdating.project.config.AppConfig;
 import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 
 import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 
 import static org.junit.Assert.*;
 
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(classes = TestConfig.class)
+@DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserCardDaoTest {
 
-    private EntityManagerFactory entityManagerFactory;
+    @Autowired
     private EntityManager entityManager;
+
+    @Autowired
     private UserDao userDao;
+
+    @Autowired
     private UserCardDao userCardDao;
-
-    @Before
-    public void setUp() {
-        entityManagerFactory = Persistence.createEntityManagerFactory("PersistenceUnit");
-        entityManager = entityManagerFactory.createEntityManager();
-        userDao = new UserDao(entityManager);
-        userCardDao = new UserCardDao(entityManager);
-    }
-
-    @After
-    public void tearDown() {
-        if (entityManager != null) {
-            entityManager.close();
-        }
-        if (entityManagerFactory != null) {
-            entityManagerFactory.close();
-        }
-    }
 
     @Test
     public void CreateAndFindUserCard() {

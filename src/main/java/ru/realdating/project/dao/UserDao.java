@@ -1,17 +1,17 @@
 package ru.realdating.project.dao;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 import ru.realdating.project.model.User;
 
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 
+@Repository
 public class UserDao {
 
-    private final EntityManager entityManager;
-
-    public UserDao(EntityManager entityManager) {
-        this.entityManager = entityManager;
-    }
+    @Autowired
+    private EntityManager entityManager;
 
     public User createUser(String login, String password) {
         User user = new User(login, password);
