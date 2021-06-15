@@ -1,21 +1,19 @@
 package ru.realdating.project.dao;
 
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import ru.realdating.project.TestConfig;
-import ru.realdating.project.config.AppConfig;
 import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 
 import javax.persistence.EntityManager;
 
-import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.*;
 
-@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
 @ContextConfiguration(classes = TestConfig.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserCardDaoTest {
