@@ -1,0 +1,154 @@
+body {
+font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
+background-image: url(https://catherineasquithgallery.com/uploads/posts/2021-03/1614640999_64-p-fon-s-uzorami-dlya-fotoshopa-83.jpg);
+}
+
+h1 {
+text-align: center;
+text-transform: uppercase;
+font-size: 58px;
+padding-bottom: 50px;
+color: #9a246e;
+text-shadow: 0px 0px 6px rgb(0 0 0 / 35%);
+}
+
+h2 {
+text-align: center;
+text-transform: uppercase;
+font-size: 38px;
+color: #9a246e;
+text-shadow: 0px 0px 6px rgb(0 0 0 / 35%);
+}
+
+.title {
+text-transform: uppercase;
+color:white;
+font-size: 20px;
+text-align: center;
+font-weight: bold;
+}
+
+.alinks {
+text-decoration: none
+}
+
+.mainbody {
+margin-left: auto;
+margin-right: auto;
+background-color: #ffffffe3;
+width: 1000px;
+border: 3px solid #a13076;
+border-radius: 10px;
+margin-top: 50px;
+padding-bottom: 50px;
+background-image: url(https://www.pinclipart.com/picdir/big/340-3404973_nail-bar-web-graphics-52-pink-hearts-clipart.png);
+background-repeat: no-repeat;
+background-size: 614px;
+background-position: 185px -43px;
+}
+
+.padding50 {
+padding-bottom: 50px;
+}
+
+.form p {
+margin-left: auto;
+margin-right: auto;
+text-align: center;
+text-transform: uppercase;
+font-weight: bold;
+color: white;
+}
+
+.inputtext {
+border: 2px solid #a13076;
+border-radius: 4px;
+padding: 4px;
+}
+
+.firstbutton {
+text-align: center;
+text-transform: uppercase;
+padding: 14px;
+font-weight: bold;
+font-size: 22px;
+border: 2px solid #a13076;
+width: 160px;
+//border-radius: 5px;
+border-radius: 50px 50px 8px 8px;
+margin-bottom: 12px;
+margin-left: 40.5%;
+color: white;
+background-color: #a13076;
+cursor: pointer;
+-webkit-transition: 0.3s ease-in-out;
+-moz-transition: 0.3s ease-in-out;
+-o-transition: 0.3s ease-in-out;
+}
+
+.middlebutton {
+text-align: center;
+text-transform: uppercase;
+padding: 14px;
+font-weight: bold;
+font-size: 22px;
+border: 2px solid #a13076;
+width: 160px;
+//border-radius: 5px;
+border-radius: 8px;
+margin-bottom: 12px;
+margin-left: 40.5%;
+color: white;
+background-color: #a13076;
+cursor: pointer;
+-webkit-transition: 0.3s ease-in-out;
+-moz-transition: 0.3s ease-in-out;
+-o-transition: 0.3s ease-in-out;
+}
+
+.endbutton {
+text-align: center;
+text-transform: uppercase;
+padding: 14px;
+font-weight: bold;
+font-size: 22px;
+border: 2px solid #a13076;
+width: 160px;
+//border-radius: 5px;
+border-radius: 8px 8px 50px 50px;
+margin-bottom: 12px;
+margin-left: 40.5%;
+color: white;
+background-color: #a13076;
+cursor: pointer;
+-webkit-transition: 0.3s ease-in-out;
+-moz-transition: 0.3s ease-in-out;
+-o-transition: 0.3s ease-in-out;
+}
+
+.firstbutton:hover {
+color: #a13076;
+background-color: white;
+transform: scale(1.01);
+-webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+-moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+}
+
+.middlebutton:hover {
+color: #a13076;
+background-color: white;
+transform: scale(1.01);
+-webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+-moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+}
+
+.endbutton:hover {
+color: #a13076;
+background-color: white;
+transform: scale(1.01);
+-webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+-moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+}

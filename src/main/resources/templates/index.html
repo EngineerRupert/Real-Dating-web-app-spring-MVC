@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class=mainbody>
+    <h1>Real Dating</h1>
+
+    <a href="/menu/user-menu" class=alinks th:if="${userSession.loggedIn}">
+        <div class=middlebutton>Go to menu</div>
+    </a>
+
+    <a href="/user/log-in" class=alinks th:if="${not userSession.loggedIn}">
+        <div class=firstbutton>Log in</div>
+    </a>
+
+    <a href="/user/register" class=alinks th:if="${not userSession.loggedIn}">
+        <div class=endbutton>Sign up</div>
+    </a>
+
+</div>
+
+</body>
+</html>

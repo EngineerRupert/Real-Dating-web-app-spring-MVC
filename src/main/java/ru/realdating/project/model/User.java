@@ -1,7 +1,10 @@
 package ru.realdating.project.model;
 
+import org.springframework.stereotype.Component;
+
 import javax.persistence.*;
 
+@Component
 @Entity
 @Table (name = "Users")
 public class User {

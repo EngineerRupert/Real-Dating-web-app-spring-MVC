@@ -8,7 +8,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 
 @Configuration
-//@ComponentScan(basePackages = "ru.realdating.project")
+@ComponentScan(basePackages = "ru.realdating.project")
 public class AppConfig {
 
     @Bean
