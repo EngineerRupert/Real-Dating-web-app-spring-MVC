@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class=mainbodycard>
+    <h1>Real Dating</h1>
+
+    <center>
+        <div class=title style="display: inline-flex;">
+            <div th:text="'Edit profile: ' + ${userSession.getLogin}" >user</div>
+        </div>
+    </center>
+
+    <div class="usercard" th:if="${userSession.loggedIn}">
+        <form method="post" action="/usercard/edit-usercard" enctype="application/x-www-form-urlencoded" class=form>
+            <p>
+                <label>
+                    About me:
+                    <input type="text" name="aboutMe" class=inputtext>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Interests:
+                    <input type="text" name="interests" class=inputtext>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Age:
+                    <input type="text" name="age" class=inputtext>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Gender:
+                    <select class=inputtext name="gender">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </label>
+            </p>
+            <p>
+                <label>
+                    Status:
+                    <select class=inputtext name="status">
+                        <option>Single</option>
+                        <option>Married</option>
+                    </select>
+                </label>
+            </p>
+            <input type="submit" value="send" class=middlebutton>
+        </form>
+    </div>
+
+</div>
+</body>
+</html>

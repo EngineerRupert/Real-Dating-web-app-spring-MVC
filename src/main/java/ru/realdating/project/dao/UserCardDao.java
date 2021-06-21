@@ -11,7 +11,7 @@ import javax.persistence.NoResultException;
 @Repository
 public class UserCardDao {
 
-    private final EntityManager entityManager;
+    private EntityManager entityManager;
 
     @Autowired
     public UserCardDao(EntityManager entityManager) {

@@ -1,11 +1,13 @@
 package ru.realdating.project.model;
 
 import org.hibernate.annotations.ColumnDefault;
-import org.hibernate.annotations.Type;
+
+import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
 import java.sql.Blob;
 
+@Component
 @Entity
 public class UserCard {
 

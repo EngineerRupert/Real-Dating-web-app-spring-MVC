@@ -3,6 +3,7 @@ package ru.realdating.project.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import ru.realdating.project.dao.UserCardDao;
 import ru.realdating.project.dao.UserDao;
 import ru.realdating.project.model.User;
 import ru.realdating.project.service.UserSession;
@@ -15,6 +16,9 @@ public class UserController {
     @Autowired
     private UserDao userDao;
 
+    @Autowired
+    private UserCardDao userCardDao;
+
     @GetMapping("/register")
     public String userRegister() {
         return "/user/user_register";
@@ -25,7 +29,8 @@ public class UserController {
             @RequestParam String login,
             @RequestParam String password
     ) {
-        userDao.createUser(login, password);
+        User user = userDao.createUser(login, password);
+        userCardDao.createUserCard(user);
         return "redirect:/";
     }
 

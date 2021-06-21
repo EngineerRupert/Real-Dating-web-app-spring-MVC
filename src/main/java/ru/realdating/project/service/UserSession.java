@@ -1,5 +1,7 @@
 package ru.realdating.project.service;
 
+import java.util.Objects;
+
 public class UserSession {
 
     private int user_id;
@@ -37,5 +39,18 @@ public class UserSession {
     public void clearSession() {
         user_id = 0;
         login = null;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserSession that = (UserSession) o;
+        return user_id == that.user_id && Objects.equals(login, that.login);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(user_id, login);
     }
 }
