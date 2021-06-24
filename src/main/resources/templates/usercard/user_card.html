@@ -13,7 +13,7 @@
         </div>
     </center>
 
-    <div class="usercard" th:if="${userSession.loggedIn}">
+    <div th:if="${userSession.loggedIn}">
         <form method="post" action="/usercard/edit-usercard" enctype="application/x-www-form-urlencoded" class=form>
             <p>
                 <label>
@@ -54,7 +54,6 @@
             <input type="submit" value="send" class=middlebutton>
         </form>
     </div>
-
 </div>
 </body>
 </html>

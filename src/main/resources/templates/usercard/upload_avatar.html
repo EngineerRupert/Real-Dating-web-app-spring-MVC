@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class=mainbodycard>
+    <h1>Real Dating</h1>
+    <div class=padding50></div>
+    <center>
+        <div class=title style="display: inline-flex;">
+            <div th:text="'Upload avatar: ' + ${userSession.getLogin}" >user</div>
+        </div>
+    </center>
+    <div th:if="${userSession.loggedIn}">
+        <form method="post" action="/usercard/upload-avatar" enctype="multipart/form-data" class=form>
+            <p>
+                <label>
+                    Upload picture:
+                    <input type="file" name="file">
+                </label>
+            </p>
+            <input type="submit" value="send" class=middlebutton>
+        </form>
+    </div>
+</div>
+</body>
+</html>

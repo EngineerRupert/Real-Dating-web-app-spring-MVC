@@ -15,12 +15,16 @@
 
     <div class=padding50></div>
 
-    <a href="/" class=alinks th:if="${userSession.loggedIn}">
+    <a href="/usercard/look-profile" class=alinks th:if="${userSession.loggedIn}">
         <div class=firstbutton>Look my profile</div>
     </a>
 
     <a href="/usercard/edit-usercard" class=alinks th:if="${userSession.loggedIn}">
         <div class=middlebutton>Edit my profile</div>
+    </a>
+
+    <a href="/usercard/upload-avatar" class=alinks th:if="${userSession.loggedIn}">
+        <div class=middlebutton>Upload avatar</div>
     </a>
 
     <a href="/menu/logout" class=alinks th:if="${userSession.loggedIn}">

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html xmlns:th ="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+<div class=mainbodycard>
+    <h1>Real Dating</h1>
+
+    <center>
+        <div class=title style="display: inline-flex;">
+            <div th:text="'My profile: ' + ${userSession.getLogin}" >user</div>
+        </div>
+    </center>
+    <div class=padding140></div>
+    <div class="usercard" th:if="${userSession.loggedIn}">
+        <div th:if="${avatar}">
+        <img th:src="'data:image/png;base64,' + ${userCardPhoto}" class=imgavatar />
+        </div>
+        <table align="center" border="0" cellpadding="1" cellspacing="1" style="max-width: 500px" class=tablep>
+            <tbody>
+            <tr>
+                <td>
+                    <p>
+                        About me :
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userCard.getAboutMe}" class=insertfont>user</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Interests :
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userCard.getInterests}" class=insertfont>user</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Age :
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userCard.getAge}" class=insertfont>user</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Gender :
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userCard.getGender}" class=insertfont>user</div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <p>
+                        Status :
+                    </p>
+                </td>
+                <td>
+                    <div th:text="${userCard.getStatus}" class=insertfont>user</div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+</div>
+</body>
+</html>

@@ -54,7 +54,7 @@ public class UserCardDaoTest {
 
         userCard.setAboutMe("aboutMe");
         userCard.setInterests("interests");
-        userCard.setAge(27);
+        userCard.setAge("27");
         userCard.setGender("gender");
         userCard.setStatus("status");
 

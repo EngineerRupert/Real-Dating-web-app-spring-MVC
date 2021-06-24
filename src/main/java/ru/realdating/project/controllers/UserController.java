@@ -6,6 +6,7 @@ import org.springframework.web.bind.annotation.*;
 import ru.realdating.project.dao.UserCardDao;
 import ru.realdating.project.dao.UserDao;
 import ru.realdating.project.model.User;
+import ru.realdating.project.model.UserCard;
 import ru.realdating.project.service.UserSession;
 
 @Controller
@@ -29,9 +30,13 @@ public class UserController {
             @RequestParam String login,
             @RequestParam String password
     ) {
-        User user = userDao.createUser(login, password);
-        userCardDao.createUserCard(user);
-        return "redirect:/";
+        User userForCheck = userDao.findUserByLogin(login);
+        if (!(login.isEmpty() || password.isEmpty()) && userForCheck == null) {
+            User user = userDao.createUser(login, password);
+            userCardDao.createUserCard(user);
+            return "redirect:/";
+        }
+        return "redirect:/user/register";
     }
 
     @GetMapping("/log-in")
@@ -51,6 +56,7 @@ public class UserController {
             userSession.setLogin(user.getLogin());
             return "redirect:/menu/user-menu";
         }
+        userSession.clearSession();
         return "redirect:/user/log-in";
     }
 

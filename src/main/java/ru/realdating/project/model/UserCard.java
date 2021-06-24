@@ -3,6 +3,8 @@ package ru.realdating.project.model;
 import org.hibernate.annotations.ColumnDefault;
 
 import org.springframework.stereotype.Component;
+import ru.realdating.project.dao.UserCardDao;
+import ru.realdating.project.service.UserSession;
 
 import javax.persistence.*;
 import java.sql.Blob;
@@ -12,13 +14,15 @@ import java.sql.Blob;
 public class UserCard {
 
     // это карточка-анкета пользователя
+
     @Id
     @GeneratedValue
     private int id;
 
-    // загрузка картинки для аватар (правда не умею с Blob работать)
-    @Column
-    private Blob avatar;
+    // загрузка картинки для аватар
+    @Lob
+    @Column(length = 100000)
+    private byte[] foto;
 
     @Column (columnDefinition="TEXT")
     private String aboutMe;
@@ -26,8 +30,8 @@ public class UserCard {
     @Column (columnDefinition="TEXT")
     private String interests;
 
-    @Column
-    private int age;
+    @Column (length = 2)
+    private String age;
 
     @Column (length = 20)
     private String gender;
@@ -42,6 +46,14 @@ public class UserCard {
 
     @OneToOne
     private User userId;
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
 
     public int getId() {
         return id;
@@ -67,11 +79,11 @@ public class UserCard {
         this.interests = interests;
     }
 
-    public int getAge() {
+    public String getAge() {
         return age;
     }
 
-    public void setAge(int age) {
+    public void setAge(String age) {
         this.age = age;
     }
 
