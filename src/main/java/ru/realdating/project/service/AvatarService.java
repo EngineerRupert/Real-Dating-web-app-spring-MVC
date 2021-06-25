@@ -7,11 +7,7 @@ import ru.realdating.project.model.UserCard;
 
 import javax.persistence.EntityManager;
 
-@Component
 public class AvatarService {
-
-    @Autowired
-    private EntityManager entityManager;
 
     @Autowired
     private UserCardDao userCardDao;
