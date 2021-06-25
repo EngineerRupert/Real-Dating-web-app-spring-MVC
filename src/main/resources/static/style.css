@@ -211,3 +211,17 @@ text-align: center;
 text-transform: uppercase;
 padding-left: 10px;
 }
+
+.errors {
+color: red;
+padding: 10px 29px;
+margin-left: auto;
+margin-right: auto;
+width: 500px;
+border-radius: 5px;
+//border: 2px dotted #a13076;
+background-color: cornsilk;
+font-weight: bold;
+font-size: 14px;
+line-height: 17px;
+}

@@ -8,24 +8,21 @@ import javax.validation.constraints.Size;
 public class RegistrationForm {
 
     @NotBlank
-    @NotEmpty
     @Size(min = 4, max = 10)
-    @Pattern(regexp = "[a-zA-Z0-9]{4,10}",
-            message = "Login must consist of letters, numbers and from 4 to 10 chars")
+    @Pattern(regexp = "[a-zA-Z0-9]*",
+            message = "Login must consist of letters, numbers.")
     private String login;
 
     @NotBlank
-    @NotEmpty
     @Size(min = 4, max = 10)
-    @Pattern(regexp = "[a-zA-Z0-9]{4,10}",
-            message = "Password must consist of letters, numbers and from 4 to 10 chars")
+    @Pattern(regexp = "[a-zA-Z0-9]*",
+            message = "Password must consist of letters, numbers.")
     private String password;
 
     @NotBlank
-    @NotEmpty
     @Size(min = 4, max = 10)
-    @Pattern(regexp = "[a-zA-Z0-9]{4,10}",
-            message = "Password must consist of letters, numbers and from 4 to 10 chars")
+    @Pattern(regexp = "[a-zA-Z0-9]*",
+            message = "Password must consist of letters, numbers.")
     private String passwordConfirmation;
 
     public String getLogin() {

@@ -38,12 +38,11 @@ public class UserController {
             @Valid RegistrationForm registrationForm,
             BindingResult bindingResult
             ) {
-
         if (!registrationForm.getPassword().equals(registrationForm.getPasswordConfirmation())) {
             bindingResult.addError(new FieldError(
                     "registrationForm",
                     "passwordConfirmation",
-                    "Password and confirmation password should match"));
+                    "Password and confirmation password should match."));
         }
 
         if (bindingResult.hasErrors()) {
@@ -52,14 +51,20 @@ public class UserController {
 
         User userForCheck = userDao.findUserByLogin(registrationForm.getLogin());
         if (userForCheck == null) {
-            userCardDao.createUserCard(userDao.createUser(registrationForm.getLogin(), registrationForm.getPassword()));
+            User user = userDao.createUser(registrationForm.getLogin(), registrationForm.getPassword());
+            userCardDao.createUserCard(user);
             return "redirect:/";
         } else {
+            bindingResult.addError(new FieldError(
+                    "registrationForm",
+                    "login",
+                    "User with this login already exists."));
             return "/user/user_register";
         }
+
     }
 
-// Old Post without @Valid
+// ---Old Post without @Valid---
 //    @PostMapping("/register")
 //    public String handleRegister(
 //            @RequestParam String login,
