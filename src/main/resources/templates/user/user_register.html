@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th ="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -11,13 +11,19 @@
         <p>
             <label>
                 Login:
-                <input type="text" name="login" class=inputtext>
+                <input type="text" name="login" th:value="${registrationForm.login}" class=inputtext>
             </label>
         </p>
         <p>
             <label>
                 Password:
                 <input type="password" name="password" class=inputtext>
+            </label>
+        </p>
+        <p>
+            <label>
+                Password confirmation:
+                <input type="password" name="passwordConfirmation" class=inputtext>
             </label>
         </p>
         <input type="submit" value="send" class=middlebutton>
