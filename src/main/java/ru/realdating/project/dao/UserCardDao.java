@@ -2,6 +2,7 @@ package ru.realdating.project.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 
@@ -28,43 +29,64 @@ public class UserCardDao {
         }
     }
 
+    @Transactional
     public UserCard createUserCard(User user) {
         UserCard userCard = new UserCard();
-        entityManager.getTransaction().begin();
-        try {
             entityManager.persist(userCard);
             userCard.setUserId(user);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
-        }
         return userCard;
     }
+// old without @Transactional
+//    public UserCard createUserCard(User user) {
+//        UserCard userCard = new UserCard();
+//        entityManager.getTransaction().begin();
+//        try {
+//            entityManager.persist(userCard);
+//            userCard.setUserId(user);
+//            entityManager.getTransaction().commit();
+//        } catch (Exception e) {
+//            entityManager.getTransaction().rollback();
+//            throw e;
+//        }
+//        return userCard;
+//    }
 
+    @Transactional
     public UserCard refreshMainInfoUserCard(UserCard userCard) {
-        entityManager.getTransaction().begin();
-        try {
             entityManager.persist(userCard);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
-        }
         return userCard;
     }
+// old without @Transactional
+//    public UserCard refreshMainInfoUserCard(UserCard userCard) {
+//        entityManager.getTransaction().begin();
+//        try {
+//            entityManager.persist(userCard);
+//            entityManager.getTransaction().commit();
+//        } catch (Exception e) {
+//            entityManager.getTransaction().rollback();
+//            throw e;
+//        }
+//        return userCard;
+//    }
 
+    @Transactional
     public UserCard addLike(UserCard userCard) {
         userCard.setLikeUserCard(userCard.getLikeUserCard()+1);
-        entityManager.getTransaction().begin();
-        try {
             entityManager.persist(userCard);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
-        }
         return userCard;
     }
+    // old without @Transactional
+//    public UserCard addLike(UserCard userCard) {
+//        userCard.setLikeUserCard(userCard.getLikeUserCard()+1);
+//        entityManager.getTransaction().begin();
+//        try {
+//            entityManager.persist(userCard);
+//            entityManager.getTransaction().commit();
+//        } catch (Exception e) {
+//            entityManager.getTransaction().rollback();
+//            throw e;
+//        }
+//        return userCard;
+//    }
 
 }

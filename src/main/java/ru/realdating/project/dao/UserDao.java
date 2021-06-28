@@ -2,6 +2,7 @@ package ru.realdating.project.dao;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 import ru.realdating.project.model.User;
 
 import javax.persistence.EntityManager;
@@ -13,20 +14,25 @@ public class UserDao {
     @Autowired
     private EntityManager entityManager;
 
+    @Transactional
     public User createUser(String login, String password) {
         User user = new User(login, password);
-
-        entityManager.getTransaction().begin();
-        try {
             entityManager.persist(user);
-            entityManager.getTransaction().commit();
-        } catch (Exception e) {
-            entityManager.getTransaction().rollback();
-            throw e;
-        }
-
         return user;
     }
+    // old without @Transactional
+//    public User createUser(String login, String password) {
+//        User user = new User(login, password);
+//        entityManager.getTransaction().begin();
+//        try {
+//            entityManager.persist(user);
+//            entityManager.getTransaction().commit();
+//        } catch (Exception e) {
+//            entityManager.getTransaction().rollback();
+//            throw e;
+//        }
+//        return user;
+//    }
 
     public User findUserByLogin(String login) {
         try {

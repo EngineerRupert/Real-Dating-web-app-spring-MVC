@@ -11,9 +11,9 @@ import javax.persistence.EntityManagerFactory;
 @ComponentScan(basePackages = "ru.realdating.project")
 public class AppConfig {
 
-    @Bean
-    public EntityManager manager (EntityManagerFactory factory) {
-        return factory.createEntityManager();
-    }
+//    @Bean
+//    public EntityManager manager (EntityManagerFactory factory) {
+//        return factory.createEntityManager();
+//    }
 
 }
