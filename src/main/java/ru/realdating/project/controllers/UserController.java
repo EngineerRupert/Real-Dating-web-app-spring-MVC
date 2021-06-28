@@ -2,14 +2,12 @@ package ru.realdating.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.realdating.project.dao.UserCardDao;
 import ru.realdating.project.dao.UserDao;
 import ru.realdating.project.model.User;
-import ru.realdating.project.model.UserCard;
 import ru.realdating.project.service.RegistrationForm;
 import ru.realdating.project.service.UserSession;
 
@@ -27,8 +25,8 @@ public class UserController {
     private UserCardDao userCardDao;
 
     @GetMapping("/register")
-    public String userRegister(@ModelAttribute("registrationForm") RegistrationForm registrationForm) {
-
+    public String userRegister(
+            @ModelAttribute("registrationForm") RegistrationForm registrationForm) {
         return "/user/user_register";
     }
 
@@ -61,23 +59,8 @@ public class UserController {
                     "User with this login already exists."));
             return "/user/user_register";
         }
-
+        // внизу конструктор
     }
-
-// ---Old Post without @Valid---
-//    @PostMapping("/register")
-//    public String handleRegister(
-//            @RequestParam String login,
-//            @RequestParam String password
-//    ) {
-//        User userForCheck = userDao.findUserByLogin(login);
-//        if (!(login.isEmpty() || password.isEmpty()) && userForCheck == null) {
-//            User user = userDao.createUser(login, password);
-//            userCardDao.createUserCard(user);
-//            return "redirect:/";
-//        }
-//        return "redirect:/user/register";
-//    }
 
     @GetMapping("/log-in")
     public String logIn() {

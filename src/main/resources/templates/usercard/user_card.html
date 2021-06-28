@@ -4,7 +4,7 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class=mainbodycard>
+<div class="mainbodycard">
     <h1>Real Dating</h1>
 
     <center>
@@ -14,29 +14,38 @@
     </center>
 
     <div th:if="${userSession.loggedIn}">
-        <form method="post" action="/usercard/edit-usercard" enctype="application/x-www-form-urlencoded" class=form>
+        <form method="post" action="/usercard/edit-usercard" enctype="application/x-www-form-urlencoded" class="form" th:object="${userCardForm}">
             <p>
                 <label>
                     About me:
-                    <input type="text" name="aboutMe" class=inputtext>
+                    <input type="text" name="aboutMe" class="inputtext" th:value="${userCardForm.aboutMe}">
                 </label>
+            <ul>
+                <li th:each="error : ${#fields.errors('aboutMe')}" th:text="${error}" class="errors"></li>
+            </ul>
             </p>
             <p>
                 <label>
                     Interests:
-                    <input type="text" name="interests" class=inputtext>
+                    <input type="text" name="interests" class="inputtext" th:value="${userCardForm.interests}">
                 </label>
+            <ul>
+                <li th:each="error : ${#fields.errors('interests')}" th:text="${error}" class="errors"></li>
+            </ul>
             </p>
             <p>
                 <label>
                     Age:
-                    <input type="text" name="age" class=inputtext>
+                    <input type="text" name="age" class="inputtext" th:value="${userCardForm.age}">
                 </label>
+            <ul>
+                <li th:each="error : ${#fields.errors('age')}" th:text="${error}" class="errors"></li>
+            </ul>
             </p>
             <p>
                 <label>
                     Gender:
-                    <select class=inputtext name="gender">
+                    <select class=inputtext name="gender" >
                         <option>Male</option>
                         <option>Female</option>
                     </select>
@@ -45,13 +54,13 @@
             <p>
                 <label>
                     Status:
-                    <select class=inputtext name="status">
+                    <select class=inputtext name="status" >
                         <option>Single</option>
                         <option>Married</option>
                     </select>
                 </label>
             </p>
-            <input type="submit" value="send" class=middlebutton>
+            <input type="submit" value="send" class="middlebutton">
         </form>
     </div>
 </div>
