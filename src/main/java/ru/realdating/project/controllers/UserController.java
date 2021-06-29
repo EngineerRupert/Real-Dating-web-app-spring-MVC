@@ -42,11 +42,9 @@ public class UserController {
                     "passwordConfirmation",
                     "Password and confirmation password should match."));
         }
-
         if (bindingResult.hasErrors()) {
             return "/user/user_register";
         }
-
         User userForCheck = userDao.findUserByLogin(registrationForm.getLogin());
         if (userForCheck == null) {
             User user = userDao.createUser(registrationForm.getLogin(), registrationForm.getPassword());

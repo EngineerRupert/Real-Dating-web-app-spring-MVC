@@ -34,12 +34,14 @@ public class UserDaoTest {
     @Test
     public void findByLoginExisting() {
         User createdUser = userDao.createUser("admin", "pass");
+        assertNotNull(createdUser);
         assertEquals(createdUser, userDao.findUserByLogin("admin"));
     }
 
     @Test
     public void findByLoginNonExisting() {
         User createdUser = userDao.createUser("admin", "pass");
+        assertNotNull(createdUser);
         assertEquals(createdUser, userDao.findUserByLogin("admin"));
         assertNull(userDao.findUserByLogin("lop"));
     }
@@ -47,6 +49,7 @@ public class UserDaoTest {
     @Test
     public void findUserByLoginAndPassword() {
         User createdUser = userDao.createUser("admin", "pass");
+        assertNotNull(createdUser);
         assertEquals(createdUser, userDao.findUserByLoginAndPassword("admin","pass"));
         assertNull(userDao.findUserByLoginAndPassword("aaa", "bbb"));
     }

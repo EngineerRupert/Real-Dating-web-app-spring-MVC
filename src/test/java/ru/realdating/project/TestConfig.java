@@ -1,5 +1,6 @@
 package ru.realdating.project;
 
+import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
@@ -8,7 +9,6 @@ import ru.realdating.project.config.AppConfig;
 import ru.realdating.project.config.ProdJpaConfig;
 import ru.realdating.project.config.TestConfigWithOutHibernate;
 
-import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 
@@ -20,15 +20,12 @@ import javax.persistence.Persistence;
                 classes = {ProdJpaConfig.class, App.class, AppConfig.class, TestConfigWithOutHibernate.class}
         )
 )
+@EnableAutoConfiguration
 public class TestConfig {
 
-    @Bean
-    public EntityManager manager (EntityManagerFactory factory) {
-        return factory.createEntityManager();
-    }
 
     @Bean
-    public EntityManagerFactory factory() {
+    public EntityManagerFactory entityManagerFactory() {
         return Persistence.createEntityManagerFactory("TestPersistenceUnit");
     }
 
