@@ -3,7 +3,7 @@ package ru.realdating.project.model;
 import javax.persistence.*;
 import java.util.List;
 
-@Entity
+//@Entity
 @Table (name = "Groups")
 public class Group {
 

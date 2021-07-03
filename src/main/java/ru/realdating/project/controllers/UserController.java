@@ -1,6 +1,7 @@
 package ru.realdating.project.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.FieldError;
@@ -15,7 +16,7 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/user")
-@SessionAttributes("userSession")
+//@SessionAttributes("userSession")
 public class UserController {
 
     @Autowired
@@ -23,6 +24,9 @@ public class UserController {
 
     @Autowired
     private UserCardDao userCardDao;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     @GetMapping("/register")
     public String userRegister(
@@ -46,8 +50,10 @@ public class UserController {
             return "/user/user_register";
         }
         User userForCheck = userDao.findUserByLogin(registrationForm.getLogin());
+        String encryptedPassword = passwordEncoder.encode(registrationForm.getPassword());
+
         if (userForCheck == null) {
-            User user = userDao.createUser(registrationForm.getLogin(), registrationForm.getPassword());
+            User user = userDao.createUser(registrationForm.getLogin(), encryptedPassword);
             userCardDao.createUserCard(user);
             return "redirect:/";
         } else {
@@ -65,21 +71,21 @@ public class UserController {
         return "/user/login";
     }
 
-    @PostMapping("/log-in")
-    public String handleLogIn(
-            @RequestParam String login,
-            @RequestParam String password,
-            UserSession userSession
-    ) {
-        User user = userDao.findUserByLoginAndPassword(login, password);
-        if (user != null) {
-            userSession.setId(user.getId());
-            userSession.setLogin(user.getLogin());
-            return "redirect:/menu/user-menu";
-        }
-        userSession.clearSession();
-        return "redirect:/user/log-in";
-    }
+//    @PostMapping("/log-in")
+//    public String handleLogIn(
+//            @RequestParam String login,
+//            @RequestParam String password,
+//            UserSession userSession
+//    ) {
+//        User user = userDao.findUserByLoginAndPassword(login, password);
+//        if (user != null) {
+//            userSession.setId(user.getId());
+//            userSession.setLogin(user.getLogin());
+//            return "redirect:/menu/user-menu";
+//        }
+//        userSession.clearSession();
+//        return "redirect:/user/log-in";
+//    }
 
     @ModelAttribute("registrationForm")
     public RegistrationForm createDefault() {

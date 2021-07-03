@@ -3,11 +3,8 @@ package ru.realdating.project.model;
 import org.hibernate.annotations.ColumnDefault;
 
 import org.springframework.stereotype.Component;
-import ru.realdating.project.dao.UserCardDao;
-import ru.realdating.project.service.UserSession;
 
 import javax.persistence.*;
-import java.sql.Blob;
 
 @Component
 @Entity
@@ -21,7 +18,7 @@ public class UserCard {
 
     // загрузка картинки для аватар
     @Lob
-    @Column(length = 100000)
+    @Column(length = 10000)
     private byte[] foto;
 
     @Column (columnDefinition="TEXT")
@@ -39,7 +36,7 @@ public class UserCard {
     @Column (length = 50)
     private String status;
 
-    // лайк, которые пользователи ставят карточке
+    // лайк, которые пользователи ставят карточке пользователя
     @Column
     @ColumnDefault(value = "0")
     private int likeUserCard;

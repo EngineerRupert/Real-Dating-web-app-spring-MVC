@@ -9,10 +9,10 @@
     <div class=padding50></div>
     <center>
         <div class=title style="display: inline-flex;">
-            <div th:text="'Upload avatar: ' + ${userSession.getLogin}" >user</div>
+            <div th:text="'Upload avatar: ' + ${getLogin}" >user</div>
         </div>
     </center>
-    <div th:if="${userSession.loggedIn}">
+
         <form method="post" action="/usercard/upload-avatar" enctype="multipart/form-data" class=form>
             <p>
                 <label>
@@ -21,8 +21,9 @@
                 </label>
             </p>
             <input type="submit" value="send" class=middlebutton>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         </form>
-    </div>
+
 </div>
 </body>
 </html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th ="http://www.thymeleaf.org">
 <head>
     <link rel="stylesheet" href="/style.css">
 </head>
@@ -21,6 +21,7 @@
             </label>
         </p>
         <input type="submit" value="send" class=middlebutton>
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     </form>
 </div>
 

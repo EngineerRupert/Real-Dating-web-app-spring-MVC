@@ -1,5 +1,6 @@
 package ru.realdating.project.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -18,10 +19,11 @@ public class User {
     private String login;
 
     @Column (nullable = false, length = 100)
+    @JsonIgnore
     private String password;
 
-    @ManyToOne
-    private Group group;
+//    @ManyToOne
+//    private Group group;
 
     public User() {
     }

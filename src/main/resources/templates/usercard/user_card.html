@@ -9,11 +9,10 @@
 
     <center>
         <div class=title style="display: inline-flex;">
-            <div th:text="'Edit profile: ' + ${userSession.getLogin}" >user</div>
+            <div th:text="'Edit profile: ' + ${getLogin}" >user</div>
         </div>
     </center>
 
-    <div th:if="${userSession.loggedIn}">
         <form method="post" action="/usercard/edit-usercard" enctype="application/x-www-form-urlencoded" class="form" th:object="${userCardForm}">
             <p>
                 <label>
@@ -61,8 +60,9 @@
                 </label>
             </p>
             <input type="submit" value="send" class="middlebutton">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         </form>
     </div>
-</div>
+
 </body>
 </html>

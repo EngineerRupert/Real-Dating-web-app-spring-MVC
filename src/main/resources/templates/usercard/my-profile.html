@@ -9,11 +9,11 @@
 
     <center>
         <div class=title style="display: inline-flex;">
-            <div th:text="'My profile: ' + ${userSession.getLogin}" >user</div>
+            <div th:text="'My profile: ' + ${getLogin}" >user</div>
         </div>
     </center>
     <div class=padding140></div>
-    <div class="usercard" th:if="${userSession.loggedIn}">
+    <div class="usercard" >
         <div th:if="${avatar}">
         <img th:src="'data:image/png;base64,' + ${userCardPhoto}" class=imgavatar />
         </div>
@@ -22,7 +22,7 @@
             <tr>
                 <td>
                     <p>
-                        About me :
+                        About me:
                     </p>
                 </td>
                 <td>
@@ -32,7 +32,7 @@
             <tr>
                 <td>
                     <p>
-                        Interests :
+                        Interests:
                     </p>
                 </td>
                 <td>
@@ -42,7 +42,7 @@
             <tr>
                 <td>
                     <p>
-                        Age :
+                        Age:
                     </p>
                 </td>
                 <td>
@@ -52,7 +52,7 @@
             <tr>
                 <td>
                     <p>
-                        Gender :
+                        Gender:
                     </p>
                 </td>
                 <td>
@@ -62,7 +62,7 @@
             <tr>
                 <td>
                     <p>
-                        Status :
+                        Status:
                     </p>
                 </td>
                 <td>

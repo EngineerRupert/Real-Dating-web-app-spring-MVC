@@ -36,6 +36,7 @@
         </ul>
         </p>
         <input type="submit" value="send" class="middlebutton">
+        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
     </form>
 </div>
 

@@ -9,15 +9,15 @@
 
     <div class=padding50></div>
 
-    <a href="/menu/user-menu" class=alinks th:if="${userSession.loggedIn}">
+    <a href="/menu/user-menu" class=alinks th:if="${loggedIn}">
         <div class=middlebutton>Go to menu</div>
     </a>
 
-    <a href="/user/log-in" class=alinks th:if="${not userSession.loggedIn}">
+    <a href="/user/log-in" class=alinks th:if="${not loggedIn}">
         <div class=firstbutton>Log in</div>
     </a>
 
-    <a href="/user/register" class=alinks th:if="${not userSession.loggedIn}">
+    <a href="/user/register" class=alinks th:if="${not loggedIn}">
         <div class=endbutton>Sign up</div>
     </a>
 

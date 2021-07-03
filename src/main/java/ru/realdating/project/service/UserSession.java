@@ -2,6 +2,7 @@ package ru.realdating.project.service;
 
 import java.util.Objects;
 
+@Deprecated
 public class UserSession {
 
     private int user_id;

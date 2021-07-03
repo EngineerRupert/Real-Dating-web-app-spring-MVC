@@ -2,15 +2,16 @@ package ru.realdating.project.controllers;
 
 import org.apache.tomcat.util.codec.binary.Base64;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.validation.FieldError;
 import org.springframework.web.bind.annotation.*;
 import ru.realdating.project.dao.UserCardDao;
+import ru.realdating.project.dao.UserDao;
+import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 import ru.realdating.project.service.AvatarService;
-import ru.realdating.project.service.RegistrationForm;
 import ru.realdating.project.service.UserCardForm;
 import ru.realdating.project.service.UserSession;
 
@@ -18,8 +19,11 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/usercard")
-@SessionAttributes("userSession")
+//@SessionAttributes("userSession")
 public class UserCardController {
+
+    @Autowired
+    private UserDao userDao;
 
     @Autowired
     private UserCardDao userCardDao;
@@ -28,8 +32,11 @@ public class UserCardController {
     private UserCard userCard;
 
     @GetMapping("/edit-usercard")
-    public String editUserCard(
-            @ModelAttribute("userCardForm") UserCardForm userCardForm) {
+    public String editUserCard(Model model,
+                               UserCardForm userCardForm,
+                               Authentication authentication) {
+        model.addAttribute("userCardForm", userCardForm);
+        model.addAttribute("getLogin", authentication.getName());
         return "/usercard/user_card";
     }
 
@@ -38,18 +45,22 @@ public class UserCardController {
             @ModelAttribute("userCardForm")
             @Valid UserCardForm userCardForm,
             BindingResult bindingResult,
-            UserSession userSession) {
+            Authentication authentication) {
         if (bindingResult.hasErrors()) {
             return "/usercard/user_card";
         }
-        userCard = userCardDao.findUserCard(userSession.getId());
-        if (!(userCardForm.getAboutMe().isEmpty())) {
+
+        String userName = authentication.getName();
+        User user = userDao.findUserByLogin(userName);
+
+        userCard = userCardDao.findUserCard(user.getId());
+        if (!userCardForm.getAboutMe().isEmpty()) {
             userCard.setAboutMe(userCardForm.getAboutMe());
         }
-        if (!(userCardForm.getInterests().isEmpty())) {
+        if (!userCardForm.getInterests().isEmpty()) {
             userCard.setInterests(userCardForm.getInterests());
         }
-        if (!(userCardForm.getAge().isEmpty())) {
+        if (!userCardForm.getAge().isEmpty()) {
             userCard.setAge(userCardForm.getAge());
         }
         userCard.setStatus(userCardForm.getStatus());
@@ -91,9 +102,14 @@ public class UserCardController {
     @GetMapping("/look-profile")
     public String lookProfile(
             Model model,
-            UserSession userSession) {
+            Authentication authentication) {
+
+        String userName = authentication.getName();
+        model.addAttribute("getLogin", userName);
+        User user = userDao.findUserByLogin(userName);
+
         UserCard userCardProfile = new UserCard();
-        userCardProfile = userCardDao.findUserCard(userSession.getId());
+        userCardProfile = userCardDao.findUserCard(user.getId());
         String imgBase64 = Base64.encodeBase64String(userCardProfile.getFoto());
         AvatarService avatarService = new AvatarService();
         model.addAttribute("userCardPhoto", imgBase64);
@@ -102,9 +118,9 @@ public class UserCardController {
         return "/usercard/my-profile";
     }
 
-    @ModelAttribute("userCardForm")
-    public UserCardForm createDefault() {
-        return new UserCardForm();
-    }
+//    @ModelAttribute("userCardForm")
+//    public UserCardForm createDefault() {
+//        return new UserCardForm();
+//    }
 
 }
