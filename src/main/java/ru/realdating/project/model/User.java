@@ -1,6 +1,7 @@
 package ru.realdating.project.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import org.hibernate.annotations.ColumnDefault;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
@@ -21,6 +22,10 @@ public class User {
     @Column (nullable = false, length = 100)
     @JsonIgnore
     private String password;
+
+    @Column
+    @ColumnDefault("false")
+    private boolean isAdmin;
 
 //    @ManyToOne
 //    private Group group;
@@ -77,5 +82,13 @@ public class User {
     public User(String login, String password) {
         this.login = login;
         this.password = password;
+    }
+
+    public boolean isAdmin() {
+        return isAdmin;
+    }
+
+    public void setAdmin(boolean admin) {
+        isAdmin = admin;
     }
 }

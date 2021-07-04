@@ -22,9 +22,16 @@ public class DetailsService implements UserDetailsService {
             throw new UsernameNotFoundException("User " + s + " not found");
         }
 
+        String[] roles;
+        if (found.isAdmin()) {
+            roles = new String[] { "USER", "ADMIN" };
+        } else {
+            roles = new String[] { "USER" };
+        }
+
         return org.springframework.security.core.userdetails.User.withUsername(s)
                 .password(found.getPassword())
-                .roles()
+                .roles(roles)
                 .build();
     }
 }

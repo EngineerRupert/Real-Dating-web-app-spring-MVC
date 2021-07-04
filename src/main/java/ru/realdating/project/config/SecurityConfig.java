@@ -18,20 +18,22 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf();
 
         http.authorizeRequests()
-                .antMatchers("/", "/user/log-in", "/user/register").permitAll()
+                .antMatchers("/", "/user/log-in", "/user/register", "/menu/user-menu").permitAll()
                 .antMatchers("/**/*.css").permitAll()
                 .antMatchers(HttpMethod.GET,"/usercard/upload-avatar").permitAll()
-                .antMatchers("/usercard/*", "/menu/user-menu").authenticated()
+                .antMatchers("/usercard/*").authenticated()
                 .antMatchers("/api/*").authenticated()
                 .anyRequest().denyAll();
-
-
 
         http.formLogin()
                 .loginPage("/user/log-in")
                 .loginProcessingUrl("/user/log-in")
                 .usernameParameter("login")
-                .passwordParameter("password");
+                .passwordParameter("password")
+                .defaultSuccessUrl("/menu/user-menu")
+                .permitAll();
+
+        http.logout().logoutUrl("/logout").logoutSuccessUrl("/").permitAll();
     }
 
     @Bean

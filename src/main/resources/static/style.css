@@ -146,6 +146,9 @@ cursor: pointer;
 -moz-transition: 0.3s ease-in-out;
 -o-transition: 0.3s ease-in-out;
 }
+#endbtn {
+width: 191px!important;
+}
 
 .firstbutton:hover {
 color: #a13076;

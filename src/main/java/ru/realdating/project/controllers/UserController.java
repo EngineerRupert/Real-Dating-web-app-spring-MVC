@@ -16,7 +16,6 @@ import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/user")
-//@SessionAttributes("userSession")
 public class UserController {
 
     @Autowired
@@ -71,6 +70,7 @@ public class UserController {
         return "/user/login";
     }
 
+    // old Post with Logig in form with out Spring Security
 //    @PostMapping("/log-in")
 //    public String handleLogIn(
 //            @RequestParam String login,

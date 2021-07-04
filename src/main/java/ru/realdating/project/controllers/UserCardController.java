@@ -70,35 +70,6 @@ public class UserCardController {
     }
     // внизу конструктор
 
-    // Old PostMapping
-//    @PostMapping("/edit-usercard")
-//    public String handleEditUserCard(@RequestParam String aboutMe,
-//                                     @RequestParam String interests,
-//                                     @RequestParam String age,
-//                                     @RequestParam String gender,
-//                                     @RequestParam String status,
-//                                     UserSession userSession) {
-//
-//        userCard = userCardDao.findUserCard(userSession.getId());
-//        if (!(aboutMe.isEmpty())) {
-//            userCard.setAboutMe(aboutMe);
-//        }
-//        if (!(interests.isEmpty())) {
-//            userCard.setInterests(interests);
-//        }
-//        if (!(age.isEmpty())) {
-//            userCard.setAge(age);
-//        }
-//        if (!(gender.isEmpty())) {
-//            userCard.setStatus(status);
-//        }
-//        if (!(status.isEmpty())) {
-//            userCard.setGender(gender);
-//        }
-//        userCardDao.refreshMainInfoUserCard(userCard);
-//        return "redirect:/menu/user-menu";
-//    }
-
     @GetMapping("/look-profile")
     public String lookProfile(
             Model model,
@@ -118,9 +89,9 @@ public class UserCardController {
         return "/usercard/my-profile";
     }
 
-//    @ModelAttribute("userCardForm")
-//    public UserCardForm createDefault() {
-//        return new UserCardForm();
-//    }
+    @ModelAttribute("userCardForm")
+    public UserCardForm createDefault() {
+        return new UserCardForm();
+    }
 
 }
