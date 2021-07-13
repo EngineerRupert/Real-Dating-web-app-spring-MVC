@@ -7,19 +7,31 @@
 <div class="mainbodycard">
     <h1>Real Dating</h1>
     <center>
-        <div class="title" style="display: inline-flex;">
-            <div th:text="'My profile: ' + ${login.getLogin()}" th:if="${authentication}">user</div>
-            <div th:text="${login.getLogin()}" th:if="${!authentication}" style="font-size:24px;">user</div>
-        </div>
+        <div class="title" th:text="'My profile: ' + ${login.getLogin()}" th:if="${authentication}">user</div>
+        <div class="title" th:text="${login.getLogin()}" th:if="${!authentication}" style="font-size:24px;">user</div>
     </center>
     <div class="padding140"></div>
     <div class="usercard" >
-        <div th:if="${avatar}">
-            <img th:src="'data:image/png;base64,' + ${userCardPhoto}" class="imgavatar" />
+        <img th:src="'data:image/png;base64,' + ${userCardPhoto}" class="imgavatar" th:if="${avatar}"/>
+        <div class="defaultuseravatar" style="margin-top: -134px;" th:if="${!avatar}"> </div>
+
+        <!-- счетчик лайков, только для своей анкеты -->
+        <div th:if="${authentication}" style="font-size:24px;">
+            <center style="padding-top: 6px;">
+                <div  th:text="'likes : ' + ${userCard.getLikeUserCard()}" class="likes-count" style="border-radius: 6px!important;">like</div>
+            </center>
         </div>
-        <div th:if="${!avatar}">
-            <div class="defaultuseravatar" style="margin-top: -134px;"> </div>
-        </div>
+
+        <!-- форма для отправки/добавки лайка карточке пользователя (со счетчиком), только для чужих анкет-->
+        <form method="post" th:action="'/add-like/' + ${login.getId()}" enctype = "application/x-www-form-urlencoded" class=form th:if="${!authentication}">
+            <center style="padding-top: 6px;">
+                <div  th:text="'likes : ' + ${userCard.getLikeUserCard()}" class="likes-count">like</div>
+            </center>
+            <input type="submit" value="add like" class="add-like-button">
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        </form>
+
+
         <table align="center" border="0" cellpadding="1" cellspacing="1" style="max-width: 500px" class="tablep">
             <tbody>
             <tr>
@@ -74,6 +86,14 @@
             </tr>
             </tbody>
         </table>
+        <div class="menu-area">
+            <a href="/look-users" class="alinks">
+                <div class="middlebutton">Find your soul mate</div>
+            </a>
+            <a href="/menu/user-menu" class="alinks">
+                <div class="middlebutton">Go to menu</div>
+            </a>
+        </div>
 </div>
 </body>
 </html>

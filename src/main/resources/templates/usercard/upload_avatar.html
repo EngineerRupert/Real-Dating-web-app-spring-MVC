@@ -4,11 +4,11 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class=mainbodycard>
+<div class="mainbodycard">
     <h1>Real Dating</h1>
-    <div class=padding50></div>
+    <div class="padding50"></div>
     <center>
-        <div class=title style="display: inline-flex;">
+        <div class="title" style="display: inline-flex;">
             <div th:text="'Upload avatar: ' + ${getLogin}" >user</div>
         </div>
     </center>
@@ -20,7 +20,12 @@
                     <input type="file" name="file">
                 </label>
             </p>
-            <input type="submit" value="send" class=middlebutton>
+            <div class="menu-area">
+                <input type="submit" value="send" class="middlebutton" style="width: 192px!important;">
+                <a href="/menu/user-menu" class="alinks">
+                    <div class="middlebutton">Go to menu</div>
+                </a>
+            </div>
             <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
         </form>
 

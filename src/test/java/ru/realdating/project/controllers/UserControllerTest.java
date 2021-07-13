@@ -52,6 +52,11 @@ public class UserControllerTest {
                 .param("password", "password")
         ).andExpect(MockMvcResultMatchers.status().is3xxRedirection())
                 .andExpect(MockMvcResultMatchers.request().sessionAttribute("userSession", new UserSession(1,"user")));
+    }
+
+    @Test
+    public void testRegister() {
+
 
     }
 

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import ru.realdating.project.dao.FindUserCardsDao;
 import ru.realdating.project.dao.UserCardDao;
 import ru.realdating.project.dao.UserDao;
@@ -84,6 +86,13 @@ public class LookUserCards {
         model.addAttribute("authentication", authentication.getName().equals(user.getLogin()));
         model.addAttribute("avatar", avatarService.checkAvatar(userCardProfile));
         return "/usercard/my-profile";
+    }
+
+    @PostMapping("/add-like/{id}")
+    public String addLike(@PathVariable("id") int id) {
+        UserCard userCard = userCardDao.findUserCard(id);
+        userCardDao.addLike(userCard);
+        return "redirect:/user/" + id + "/profile";
     }
 
 }

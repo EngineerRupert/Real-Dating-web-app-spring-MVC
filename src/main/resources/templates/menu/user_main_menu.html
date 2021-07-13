@@ -15,22 +15,30 @@
 
     <div class="padding50"></div>
 
-    <a href="/usercard/look-profile" class="alinks" th:if="${loggedIn}">
-        <div class="firstbutton">Look my profile</div>
-    </a>
+    <div class="menu-area">
 
-    <a href="/usercard/edit-usercard" class="alinks" th:if="${loggedIn}">
-        <div class="middlebutton">Edit my profile</div>
-    </a>
+        <a href="/look-users" class="alinks" th:if="${loggedIn}">
+            <div class="firstbutton">Find your soul mate</div>
+        </a>
 
-    <a href="/usercard/upload-avatar" class="alinks" th:if="${loggedIn}">
-        <div class="middlebutton">Upload avatar</div>
-    </a>
+        <a href="/usercard/look-profile" class="alinks" th:if="${loggedIn}">
+            <div class="middlebutton">Look my profile</div>
+        </a>
 
-    <form action="/logout" method="post" th:if="${loggedIn}">
-        <button id="endbtn" type="submit" class="endbutton">Log out</button>
-        <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
-    </form>
+        <a href="/usercard/edit-usercard" class="alinks" th:if="${loggedIn}">
+            <div class="middlebutton">Edit my profile</div>
+        </a>
+
+        <a href="/usercard/upload-avatar" class="alinks" th:if="${loggedIn}">
+            <div class="middlebutton">Upload avatar</div>
+        </a>
+
+        <form action="/logout" method="post" th:if="${loggedIn}">
+            <button id="endbtn" type="submit" class="endbutton">Log out</button>
+            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}">
+        </form>
+
+    </div>
 
 </div>
 </body>

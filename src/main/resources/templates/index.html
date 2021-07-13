@@ -4,22 +4,30 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class=mainbody>
+<div class="mainbody">
     <h1>Real Dating</h1>
 
-    <div class=padding50></div>
+    <div class="padding50"></div>
 
-    <a href="/menu/user-menu" class=alinks th:if="${loggedIn}">
-        <div class=middlebutton>Go to menu</div>
+    <div class="menu-area">
+
+    <a href="/look-users" class="alinks" th:if="${loggedIn}">
+        <div class="firstbutton">Find your soul mate</div>
     </a>
 
-    <a href="/user/log-in" class=alinks th:if="${not loggedIn}">
-        <div class=firstbutton>Log in</div>
+    <a href="/menu/user-menu" class="alinks" th:if="${loggedIn}">
+        <div class="endbutton">Go to menu</div>
     </a>
 
-    <a href="/user/register" class=alinks th:if="${not loggedIn}">
-        <div class=endbutton>Sign up</div>
+    <a href="/user/log-in" class="alinks" th:if="${not loggedIn}">
+        <div class="firstbutton">Log in</div>
     </a>
+
+    <a href="/user/register" class="alinks" th:if="${not loggedIn}">
+        <div class="endbutton">Sign up</div>
+    </a>
+
+    </div>
 
 </div>
 

@@ -65,6 +65,12 @@ background-size: 1000px;
 background-position: 0px -95px;
 }
 
+.menu-area {
+width: 193px;
+margin-left: auto;
+margin-right: auto;
+}
+
 .padding50 {
 padding-bottom: 50px;
 }
@@ -98,7 +104,6 @@ border: 2px solid #a13076;
 width: 160px;
 border-radius: 50px 50px 8px 8px;
 margin-bottom: 12px;
-margin-left: 40.5%;
 color: white;
 background-color: #a13076;
 cursor: pointer;
@@ -117,7 +122,6 @@ border: 2px solid #a13076;
 width: 160px;
 border-radius: 8px;
 margin-bottom: 12px;
-margin-left: 40.5%;
 color: white;
 background-color: #a13076;
 cursor: pointer;
@@ -137,7 +141,6 @@ width: 160px;
 //border-radius: 5px;
 border-radius: 8px 8px 50px 50px;
 margin-bottom: 12px;
-margin-left: 40.5%;
 color: white;
 background-color: #a13076;
 cursor: pointer;
@@ -230,6 +233,41 @@ transform: scale(1.01);
 -webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.73);
 -moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.73);
 box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+}
+
+.add-like-button {
+cursor: pointer;
+text-align:center;
+border: 2px solid #9a246e;
+border-radius: 0 0 6px 6px;
+width: 118px;
+text-transform: uppercase;
+padding: 5px!important;
+font-size: 19px;
+color: white;
+background-color: #a13076;
+-webkit-transition: 0.3s ease-in-out;
+-moz-transition: 0.3s ease-in-out;
+-o-transition: 0.3s ease-in-out;
+}
+
+.add-like-button:hover {
+color: #a13076;
+background-color: white;
+transform: scale(1.01);
+-webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+-moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+}
+
+.likes-count {
+border: 2px solid #9a246e;
+width: 106px;
+border-radius: 6px 6px 0 0;
+padding: 4px;
+font-size: 15px;
+font-weight: bold;
+text-transform: uppercase;
 }
 
 .fortextcard a {

@@ -21,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/", "/user/log-in", "/user/register").permitAll()
                 .antMatchers("/**/*.css").permitAll()
                 .antMatchers(HttpMethod.GET,"/usercard/upload-avatar").permitAll()
-                .antMatchers("/usercard/*", "/menu/user-menu", "/user/**", "/look-users").authenticated()
+                .antMatchers("/usercard/*", "/menu/user-menu", "/user/**", "/look-users", "/add-like/**").authenticated()
                 .antMatchers("/api/*").authenticated()
                 .anyRequest().denyAll();
 
