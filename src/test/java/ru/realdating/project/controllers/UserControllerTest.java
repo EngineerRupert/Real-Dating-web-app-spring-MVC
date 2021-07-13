@@ -12,6 +12,7 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import ru.realdating.project.config.TestConfigWithOutHibernate;
+import ru.realdating.project.dao.FindUserCardsDao;
 import ru.realdating.project.dao.UserCardDao;
 import ru.realdating.project.dao.UserDao;
 import ru.realdating.project.model.User;
@@ -28,18 +29,20 @@ public class UserControllerTest {
     private MockMvc mockMvc;
 
     @MockBean
-    public UserDao userDao;
+    private UserDao userDao;
 
     @MockBean
-    public UserCardDao userCardDao;
+    private UserCardDao userCardDao;
 
     @MockBean
-    public UserCard userCard;
+    private UserCard userCard;
+
+    @MockBean
+    private FindUserCardsDao findUserCardsDao;
 
     @Test
     public void testLogIn() throws Exception {
-        User user = new User("user","password");
-        user.setId(1);
+        User user = userDao.createUser("user","password");
 
         Mockito.when(userDao.findUserByLoginAndPassword("user","password"))
                 .thenReturn(user);

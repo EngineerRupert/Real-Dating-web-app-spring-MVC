@@ -8,6 +8,7 @@ import org.springframework.test.context.ContextConfiguration;
 import ru.realdating.project.TestConfig;
 
 import ru.realdating.project.model.User;
+import ru.realdating.project.model.UserCard;
 
 import javax.persistence.EntityManager;
 
@@ -52,6 +53,13 @@ public class UserDaoTest {
         assertNotNull(createdUser);
         assertEquals(createdUser, userDao.findUserByLoginAndPassword("admin","pass"));
         assertNull(userDao.findUserByLoginAndPassword("aaa", "bbb"));
+    }
+
+    @Test
+    public void finById() {
+        User user = userDao.createUser("admin","admin");
+        User userForCheck = userDao.findById(user.getId());
+        assertEquals(user.getId(), userForCheck.getId());
     }
 
 }

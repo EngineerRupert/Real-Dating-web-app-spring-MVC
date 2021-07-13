@@ -4,20 +4,23 @@
     <link rel="stylesheet" href="/style.css">
 </head>
 <body>
-<div class=mainbodycard>
+<div class="mainbodycard">
     <h1>Real Dating</h1>
-
     <center>
-        <div class=title style="display: inline-flex;">
-            <div th:text="'My profile: ' + ${getLogin}" >user</div>
+        <div class="title" style="display: inline-flex;">
+            <div th:text="'My profile: ' + ${login.getLogin()}" th:if="${authentication}">user</div>
+            <div th:text="${login.getLogin()}" th:if="${!authentication}" style="font-size:24px;">user</div>
         </div>
     </center>
-    <div class=padding140></div>
+    <div class="padding140"></div>
     <div class="usercard" >
         <div th:if="${avatar}">
-        <img th:src="'data:image/png;base64,' + ${userCardPhoto}" class=imgavatar />
+            <img th:src="'data:image/png;base64,' + ${userCardPhoto}" class="imgavatar" />
         </div>
-        <table align="center" border="0" cellpadding="1" cellspacing="1" style="max-width: 500px" class=tablep>
+        <div th:if="${!avatar}">
+            <div class="defaultuseravatar" style="margin-top: -134px;"> </div>
+        </div>
+        <table align="center" border="0" cellpadding="1" cellspacing="1" style="max-width: 500px" class="tablep">
             <tbody>
             <tr>
                 <td>
@@ -26,7 +29,7 @@
                     </p>
                 </td>
                 <td>
-                    <div th:text="${userCard.getAboutMe}" class=insertfont>user</div>
+                    <div th:text="${userCard.getAboutMe}" class="insertfont">user</div>
                 </td>
             </tr>
             <tr>
@@ -36,7 +39,7 @@
                     </p>
                 </td>
                 <td>
-                    <div th:text="${userCard.getInterests}" class=insertfont>user</div>
+                    <div th:text="${userCard.getInterests}" class="insertfont">user</div>
                 </td>
             </tr>
             <tr>
@@ -46,7 +49,7 @@
                     </p>
                 </td>
                 <td>
-                    <div th:text="${userCard.getAge}" class=insertfont>user</div>
+                    <div th:text="${userCard.getAge}" class="insertfont">user</div>
                 </td>
             </tr>
             <tr>
@@ -56,7 +59,7 @@
                     </p>
                 </td>
                 <td>
-                    <div th:text="${userCard.getGender}" class=insertfont>user</div>
+                    <div th:text="${userCard.getGender}" class="insertfont">user</div>
                 </td>
             </tr>
             <tr>
@@ -66,7 +69,7 @@
                     </p>
                 </td>
                 <td>
-                    <div th:text="${userCard.getStatus}" class=insertfont>user</div>
+                    <div th:text="${userCard.getStatus}" class="insertfont">user</div>
                 </td>
             </tr>
             </tbody>

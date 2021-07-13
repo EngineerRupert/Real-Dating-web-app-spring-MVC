@@ -13,14 +13,14 @@ import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 import ru.realdating.project.service.AvatarService;
 import ru.realdating.project.service.UserCardForm;
-import ru.realdating.project.service.UserSession;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/usercard")
-//@SessionAttributes("userSession")
 public class UserCardController {
+
+    // контроллер отвечающий за карточку-профиль пользователя
 
     @Autowired
     private UserDao userDao;
@@ -40,6 +40,7 @@ public class UserCardController {
         return "/usercard/user_card";
     }
 
+    // изменить карточку
     @PostMapping("/edit-usercard")
     public String handleEditUserCard(
             @ModelAttribute("userCardForm")
@@ -70,21 +71,22 @@ public class UserCardController {
     }
     // внизу конструктор
 
+    // посмотреть карточку
     @GetMapping("/look-profile")
     public String lookProfile(
             Model model,
             Authentication authentication) {
 
-        String userName = authentication.getName();
-        model.addAttribute("getLogin", userName);
-        User user = userDao.findUserByLogin(userName);
-
+        User user = userDao.findUserByLogin(authentication.getName());
         UserCard userCardProfile = new UserCard();
         userCardProfile = userCardDao.findUserCard(user.getId());
         String imgBase64 = Base64.encodeBase64String(userCardProfile.getFoto());
         AvatarService avatarService = new AvatarService();
+
+        model.addAttribute("login", user);
         model.addAttribute("userCardPhoto", imgBase64);
         model.addAttribute("userCard", userCardProfile);
+        model.addAttribute("authentication", authentication.getName().equals(user.getLogin()));
         model.addAttribute("avatar", avatarService.checkAvatar(userCardProfile));
         return "/usercard/my-profile";
     }

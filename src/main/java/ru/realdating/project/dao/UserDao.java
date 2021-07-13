@@ -10,6 +10,8 @@ import ru.realdating.project.model.User;
 @Repository
 public interface UserDao extends JpaRepository<User, Integer> {
 
+    // DAO-репозитория отвечающая за пользователя
+
     @Transactional
     default User createUser(String login, String password) {
         User user = new User(login, password);
@@ -20,45 +22,10 @@ public interface UserDao extends JpaRepository<User, Integer> {
     @Query("select u from User u where u.login = :login")
     User findUserByLogin(@Param("login") String login);
 
+    @Query("from User u where u.id = :id")
+    User findById(@Param("id") int id);
+
     @Query("select u from User u where u.login = :login and u.password = :password")
     User findUserByLoginAndPassword(@Param("login") String login, @Param("password") String password);
-
-    // old without @Transactional
-//    public User createUser(String login, String password) {
-//        User user = new User(login, password);
-//        entityManager.getTransaction().begin();
-//        try {
-//            entityManager.persist(user);
-//            entityManager.getTransaction().commit();
-//        } catch (Exception e) {
-//            entityManager.getTransaction().rollback();
-//            throw e;
-//        }
-//        return user;
-//    }
-
-    //old without Repository
-//    default User findUserByLogin(String login) {
-//        try {
-//            return entityManager.createQuery("select u from User u where u.login = :loginForSearch", User.class)
-//                    .setParameter("loginForSearch", login)
-//                    .getSingleResult();
-//        } catch (NoResultException e) {
-//            return null;
-//        }
-//    }
-
-    // old without Repository
-//    default User findUserByLoginAndPassword(String login, String password) {
-//        try {
-//            return entityManager.createQuery("select u from User u " +
-//                    "where u.login = :loginForSearch and u.password = :passwordForSearch", User.class)
-//                    .setParameter("loginForSearch", login)
-//                    .setParameter("passwordForSearch", password)
-//                    .getSingleResult();
-//        } catch (NoResultException e) {
-//            return null;
-//        }
-//    }
 
 }

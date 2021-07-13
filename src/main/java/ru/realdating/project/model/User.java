@@ -27,9 +27,6 @@ public class User {
     @ColumnDefault("false")
     private boolean isAdmin;
 
-//    @ManyToOne
-//    private Group group;
-
     public User() {
     }
 

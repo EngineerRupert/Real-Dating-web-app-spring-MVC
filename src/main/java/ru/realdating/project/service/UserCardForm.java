@@ -1,15 +1,11 @@
 package ru.realdating.project.service;
 
-import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 
 public class UserCardForm {
 
-//    @NotEmpty
     private String aboutMe;
-
-//    @NotEmpty
     private String interests;
 
     @Size(min = 2, max = 2)

@@ -3,6 +3,7 @@ font-family: ‘Trebuchet MS’, Helvetica, sans-serif;
 background-image: url(https://i.postimg.cc/rmcTNQRZ/bg.jpg);
 background-repeat: no-repeat;
 background-size: 1920px 1080px;
+background-attachment: fixed;
 background-color: rgb(161, 48, 118);
 }
 
@@ -95,7 +96,6 @@ font-weight: bold;
 font-size: 22px;
 border: 2px solid #a13076;
 width: 160px;
-//border-radius: 5px;
 border-radius: 50px 50px 8px 8px;
 margin-bottom: 12px;
 margin-left: 40.5%;
@@ -115,7 +115,6 @@ font-weight: bold;
 font-size: 22px;
 border: 2px solid #a13076;
 width: 160px;
-//border-radius: 5px;
 border-radius: 8px;
 margin-bottom: 12px;
 margin-left: 40.5%;
@@ -146,6 +145,7 @@ cursor: pointer;
 -moz-transition: 0.3s ease-in-out;
 -o-transition: 0.3s ease-in-out;
 }
+
 #endbtn {
 width: 191px!important;
 }
@@ -186,10 +186,86 @@ margin-right: auto;
 margin-top: -134px;
 }
 
+.miniavatar {
+max-width: 300px;
+height: 300px;
+border: 3px solid #9a246e;
+border-radius: 23px;
+margin-left: auto;
+margin-right: auto;
+}
+
+.defaultuseravatar {
+max-width: 226px;
+height: 300px;
+border: 3px solid #9a246e;
+border-radius: 23px;
+margin-left: auto;
+margin-right: auto;
+background-image: url(https://i.ibb.co/1ZwhhNy/avatar-user.jpg);
+background-repeat: no-repeat;
+background-size: cover;
+}
+
+.mini-profile-button {
+text-align:center;
+border: 2px solid #9a246e;
+border-radius: 6px;
+height: 25px;
+width: 144px;
+text-transform: uppercase;
+padding: 8px!important;
+font-size: 19px;
+color: white;
+background-color: #a13076;
+-webkit-transition: 0.3s ease-in-out;
+-moz-transition: 0.3s ease-in-out;
+-o-transition: 0.3s ease-in-out;
+}
+
+.mini-profile-button:hover {
+color: #a13076;
+background-color: white;
+transform: scale(1.01);
+-webkit-box-shadow: 0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+-moz-box-shadow:    0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+box-shadow:         0px 0px 11px 0px rgba(50, 50, 50, 0.73);
+}
+
+.fortextcard a {
+text-decoration: none
+}
+
+.merge {
+margin-left: 19%;
+display: flex;
+}
+
+.userslook {
+text-align: center;
+width: 250px;
+margin-left: 12%;
+display: inline-block;
+}
+.userslook2 {
+text-align: center;
+width: 250px;
+margin-right: auto;
+display: inline-block;
+margin-top:80px;
+}
+
 .tablep {
 max-width: 600px;
 padding-top: 20px;
 padding-bottom: 22px;
+}
+
+.tablepcards {
+max-width: 600px;
+padding-top: 20px;
+padding-bottom: 22px;
+display: inherit;
 }
 
 .tablep p {
@@ -208,6 +284,31 @@ max-width: 600px;
 margin-left: auto;
 margin-right: auto;
 background-color: #f0628a;
+}
+
+.usercardmini {
+display: inline-block;
+padding-bottom: 20px;
+text-align: center;
+width: 250px;
+}
+
+.fortextcard {
+//display: inline-block;
+//padding: 0 9px;
+//text-align: center;
+width: 200px;
+height: 300px;
+font-weight: bold;
+//margin-left: 11px;
+//font-size: 19px;
+//margin-right: -6px;
+padding-bottom: 30px;
+font-size: 22px;
+}
+
+.fortextcard div {
+padding: 3px 0px;
 }
 
 .insertfont {

@@ -5,6 +5,8 @@ import org.hibernate.annotations.ColumnDefault;
 import org.springframework.stereotype.Component;
 
 import javax.persistence.*;
+import java.util.Arrays;
+import java.util.Objects;
 
 @Component
 @Entity
@@ -116,4 +118,18 @@ public class UserCard {
         this.userId = userId;
     }
 
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        UserCard userCard = (UserCard) o;
+        return id == userCard.id && likeUserCard == userCard.likeUserCard && Arrays.equals(foto, userCard.foto) && Objects.equals(aboutMe, userCard.aboutMe) && Objects.equals(interests, userCard.interests) && Objects.equals(age, userCard.age) && Objects.equals(gender, userCard.gender) && Objects.equals(status, userCard.status) && Objects.equals(userId, userCard.userId);
+    }
+
+    @Override
+    public int hashCode() {
+        int result = Objects.hash(id, aboutMe, interests, age, gender, status, likeUserCard, userId);
+        result = 31 * result + Arrays.hashCode(foto);
+        return result;
+    }
 }

@@ -14,7 +14,6 @@ public class DetailsService implements UserDetailsService {
     @Autowired
     public UserDao userDao;
 
-
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         User found = userDao.findUserByLogin(s);
@@ -34,4 +33,5 @@ public class DetailsService implements UserDetailsService {
                 .roles(roles)
                 .build();
     }
+
 }

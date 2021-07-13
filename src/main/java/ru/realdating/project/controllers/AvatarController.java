@@ -15,6 +15,8 @@ import ru.realdating.project.model.UserCard;
 @RequestMapping(path = "/usercard")
 public class AvatarController {
 
+    // контроллер отвечающий за загрузку аватара-картинки для профиля
+
     @Autowired
     private UserCardDao userCardDao;
 

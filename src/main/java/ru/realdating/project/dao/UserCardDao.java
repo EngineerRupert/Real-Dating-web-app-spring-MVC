@@ -11,6 +11,8 @@ import ru.realdating.project.model.UserCard;
 @Repository
 public interface UserCardDao extends JpaRepository<UserCard, Integer> {
 
+    // DAO-репозитория отвечающая за карточку-профиль пользователя
+
     @Query("from UserCard u where u.userId.id = :userId")
     UserCard findUserCard(@Param("userId") int id);
 
@@ -34,47 +36,5 @@ public interface UserCardDao extends JpaRepository<UserCard, Integer> {
         save(userCard);
         return userCard;
     }
-
-// old without @Transactional
-//    public UserCard createUserCard(User user) {
-//        UserCard userCard = new UserCard();
-//        entityManager.getTransaction().begin();
-//        try {
-//            entityManager.persist(userCard);
-//            userCard.setUserId(user);
-//            entityManager.getTransaction().commit();
-//        } catch (Exception e) {
-//            entityManager.getTransaction().rollback();
-//            throw e;
-//        }
-//        return userCard;
-//    }
-
-// old without @Transactional
-//    public UserCard refreshMainInfoUserCard(UserCard userCard) {
-//        entityManager.getTransaction().begin();
-//        try {
-//            entityManager.persist(userCard);
-//            entityManager.getTransaction().commit();
-//        } catch (Exception e) {
-//            entityManager.getTransaction().rollback();
-//            throw e;
-//        }
-//        return userCard;
-//    }
-
-    // old without @Transactional
-//    public UserCard addLike(UserCard userCard) {
-//        userCard.setLikeUserCard(userCard.getLikeUserCard()+1);
-//        entityManager.getTransaction().begin();
-//        try {
-//            entityManager.persist(userCard);
-//            entityManager.getTransaction().commit();
-//        } catch (Exception e) {
-//            entityManager.getTransaction().rollback();
-//            throw e;
-//        }
-//        return userCard;
-//    }
 
 }

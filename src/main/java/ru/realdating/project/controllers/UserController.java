@@ -10,13 +10,14 @@ import ru.realdating.project.dao.UserCardDao;
 import ru.realdating.project.dao.UserDao;
 import ru.realdating.project.model.User;
 import ru.realdating.project.service.RegistrationForm;
-import ru.realdating.project.service.UserSession;
 
 import javax.validation.Valid;
 
 @Controller
 @RequestMapping(path = "/user")
 public class UserController {
+
+    // контроллер отвечающий за общие действия пользователя
 
     @Autowired
     private UserDao userDao;
@@ -69,23 +70,6 @@ public class UserController {
     public String logIn() {
         return "/user/login";
     }
-
-    // old Post with Logig in form with out Spring Security
-//    @PostMapping("/log-in")
-//    public String handleLogIn(
-//            @RequestParam String login,
-//            @RequestParam String password,
-//            UserSession userSession
-//    ) {
-//        User user = userDao.findUserByLoginAndPassword(login, password);
-//        if (user != null) {
-//            userSession.setId(user.getId());
-//            userSession.setLogin(user.getLogin());
-//            return "redirect:/menu/user-menu";
-//        }
-//        userSession.clearSession();
-//        return "redirect:/user/log-in";
-//    }
 
     @ModelAttribute("registrationForm")
     public RegistrationForm createDefault() {

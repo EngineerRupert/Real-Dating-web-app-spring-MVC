@@ -11,9 +11,4 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 @EnableJpaRepositories(basePackages = "ru.realdating.project.dao")
 public class AppConfig {
 
-//    @Bean
-//    public EntityManager manager (EntityManagerFactory factory) {
-//        return factory.createEntityManager();
-//    }
-
 }

@@ -23,7 +23,6 @@ import javax.persistence.Persistence;
 @EnableAutoConfiguration
 public class TestConfig {
 
-
     @Bean
     public EntityManagerFactory entityManagerFactory() {
         return Persistence.createEntityManagerFactory("TestPersistenceUnit");

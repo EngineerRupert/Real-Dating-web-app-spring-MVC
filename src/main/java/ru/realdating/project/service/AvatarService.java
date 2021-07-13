@@ -1,13 +1,12 @@
 package ru.realdating.project.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import ru.realdating.project.dao.UserCardDao;
 import ru.realdating.project.model.UserCard;
 
-import javax.persistence.EntityManager;
-
 public class AvatarService {
+
+    // класс отвечающий за проверку на наличие аватарки
 
     @Autowired
     private UserCardDao userCardDao;

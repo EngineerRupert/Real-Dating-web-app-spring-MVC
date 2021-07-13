@@ -10,6 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RequestMapping(path = "/menu")
 public class MenuController {
 
+    //контроллер отвечающий за вывод главного меню пользователя
+
     @GetMapping("/user-menu")
     public String userMainMenu(
             Model model,
