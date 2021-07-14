@@ -94,6 +94,13 @@ border-radius: 4px;
 padding: 4px;
 }
 
+.inputtext-filter {
+border: 2px solid #a13076;
+border-radius: 4px;
+padding: 14px;
+font-size: 18px;
+}
+
 .firstbutton {
 text-align: center;
 text-transform: uppercase;

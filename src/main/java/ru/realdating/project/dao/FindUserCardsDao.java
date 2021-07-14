@@ -15,4 +15,7 @@ public interface FindUserCardsDao extends JpaRepository <UserCard, Integer> {
     @Query("from UserCard where gender = 'Male'")
     List<UserCard> getUserCardsMale();
 
+    @Query("from UserCard where gender = 'Female'")
+    List<UserCard> getUserCardsFemale();
+
 }

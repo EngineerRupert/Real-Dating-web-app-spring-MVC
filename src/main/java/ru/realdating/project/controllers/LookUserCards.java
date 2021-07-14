@@ -35,13 +35,34 @@ public class LookUserCards {
     @Autowired
     private UserCardDao userCardDao;
 
-    // просмотр(список) карточек пользователей
     @GetMapping("/look-users")
+    public String lookUsersFilter(
+            Authentication authentication,
+            Model model) {
+        model.addAttribute("getLogin", authentication.getName());
+        return "/usercard/users-filter";
+    }
+
+    @PostMapping("/look-users")
+    public String handleLookUsersFilter(@RequestParam String gender) {
+        return "redirect:/look-users/" + gender;
+    }
+
+    // просмотр(список) карточек пользователей
+    @GetMapping("/look-users/{gender}")
     public String lookUserCards(
+            @PathVariable("gender") String gender,
             Authentication authentication,
             Model model) {
 
-        List<UserCard> listOfUserCards = userCardsDao.getUserCardsMale();
+        List<UserCard> listOfUserCards = new ArrayList<>();
+        if (gender.equals("Male")) {
+            listOfUserCards = userCardsDao.getUserCardsMale();
+        }
+        if (gender.equals("Female")) {
+            listOfUserCards = userCardsDao.getUserCardsFemale();
+        }
+
         String[] imgBase64 = new String[listOfUserCards.size()];
         List<UsersCardsPageService> listOfUsers = new ArrayList<>();
         List<Integer> listOfId = new ArrayList<>();
