@@ -9,17 +9,12 @@ import ru.realdating.project.TestConfig;
 import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 
-import javax.persistence.EntityManager;
-
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ContextConfiguration(classes = TestConfig.class)
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserCardDaoTest {
-
-    @Autowired
-    private EntityManager entityManager;
 
     @Autowired
     private UserDao userDao;

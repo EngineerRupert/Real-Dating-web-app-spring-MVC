@@ -8,6 +8,7 @@ import ru.realdating.project.App;
 
 import javax.persistence.EntityManager;
 
+@Deprecated
 @Configuration
 @ComponentScan(basePackages = {"ru.realdating.project.config", "ru.realdating.project.controllers"},
         excludeFilters = @ComponentScan.Filter(

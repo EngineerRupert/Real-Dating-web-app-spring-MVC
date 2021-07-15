@@ -14,7 +14,7 @@ import javax.persistence.Persistence;
 
 @Configuration
 @ComponentScan(
-        basePackages = "ru.realdating.project",
+        basePackages = {"ru.realdating.project", "ru.realdating.project.service"},
         excludeFilters = @ComponentScan.Filter(
                 type = FilterType.ASSIGNABLE_TYPE,
                 classes = {ProdJpaConfig.class, App.class, AppConfig.class, TestConfigWithOutHibernate.class}
@@ -27,5 +27,7 @@ public class TestConfig {
     public EntityManagerFactory entityManagerFactory() {
         return Persistence.createEntityManagerFactory("TestPersistenceUnit");
     }
+
+
 
 }

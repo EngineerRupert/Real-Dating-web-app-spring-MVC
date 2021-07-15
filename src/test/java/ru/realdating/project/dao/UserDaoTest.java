@@ -8,7 +8,6 @@ import org.springframework.test.context.ContextConfiguration;
 import ru.realdating.project.TestConfig;
 
 import ru.realdating.project.model.User;
-import ru.realdating.project.model.UserCard;
 
 import javax.persistence.EntityManager;
 

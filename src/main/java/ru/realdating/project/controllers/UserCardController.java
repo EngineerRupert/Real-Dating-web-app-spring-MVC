@@ -40,7 +40,7 @@ public class UserCardController {
         return "/usercard/user_card";
     }
 
-    // изменить карточку
+    // изменить карточку пользователя
     @PostMapping("/edit-usercard")
     public String handleEditUserCard(
             @ModelAttribute("userCardForm")
@@ -71,7 +71,7 @@ public class UserCardController {
     }
     // внизу конструктор
 
-    // посмотреть карточку
+    // посмотреть карточку пользователя
     @GetMapping("/look-profile")
     public String lookProfile(
             Model model,

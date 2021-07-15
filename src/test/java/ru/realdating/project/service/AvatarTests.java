@@ -25,9 +25,6 @@ import static org.junit.jupiter.api.Assertions.*;
 class AvatarTests {
 
     @Autowired
-    private EntityManager entityManager;
-
-    @Autowired
     private UserCardDao userCardDao;
 
     @Autowired

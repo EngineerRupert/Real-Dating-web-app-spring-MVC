@@ -9,8 +9,6 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.result.MockMvcResultMatchers;
 import ru.realdating.project.TestConfig;
-import ru.realdating.project.config.TestConfigWithOutHibernate;
-import ru.realdating.project.service.UserSession;
 
 @SpringBootTest
 @AutoConfigureMockMvc
@@ -22,13 +20,8 @@ class MainPageControllerTest {
 
     @Test
     public void indexTest() throws Exception {
-        UserSession userSession = new UserSession(1, "TestUser");
-
-        mockMvc.perform(
-                MockMvcRequestBuilders.get("/").sessionAttr("userSession", userSession)
-        )
-                .andExpect(MockMvcResultMatchers.status().isOk())
-                .andExpect(MockMvcResultMatchers.request().sessionAttribute("userSession", userSession));
+        mockMvc.perform(MockMvcRequestBuilders.get("/"))
+                .andExpect(MockMvcResultMatchers.status().isOk());
     }
 
 }
