@@ -20,7 +20,8 @@ import javax.validation.Valid;
 @RequestMapping(path = "/usercard")
 public class UserCardController {
 
-    // контроллер отвечающий за карточку-профиль пользователя
+    // rus: контроллер отвечающий за карточку-профиль пользователя
+    // eng: controller responsible for the user's profile card
 
     @Autowired
     private UserDao userDao;
@@ -40,7 +41,8 @@ public class UserCardController {
         return "/usercard/user_card";
     }
 
-    // изменить карточку пользователя
+    // rus: изменить карточку пользователя
+    // eng: change user card
     @PostMapping("/edit-usercard")
     public String handleEditUserCard(
             @ModelAttribute("userCardForm")
@@ -71,7 +73,8 @@ public class UserCardController {
     }
     // внизу конструктор
 
-    // посмотреть карточку пользователя
+    // rus: посмотреть карточку пользователя
+    // eng: view user card
     @GetMapping("/look-profile")
     public String lookProfile(
             Model model,

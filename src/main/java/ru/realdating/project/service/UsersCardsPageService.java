@@ -2,7 +2,8 @@ package ru.realdating.project.service;
 
 public class UsersCardsPageService {
 
-    // класс для где берем нужные нам поля из 2 таблиц, для правильного показа список карточек пользователей.
+    // rus: класс для где берем нужные нам поля из 2 таблиц, для правильного показа список карточек пользователей.
+    // eng: class for where we take the fields we need from 2 tables, for the correct display of the list of user cards.
 
     private String login;
     private String age;

@@ -10,7 +10,8 @@ import ru.realdating.project.model.User;
 @Repository
 public interface UserDao extends JpaRepository<User, Integer> {
 
-    // DAO-репозитория отвечающая за пользователя
+    // rus: DAO-репозитория отвечающая за пользователя
+    // eng: DAO repository responsible for the user
 
     @Transactional
     default User createUser(String login, String password) {

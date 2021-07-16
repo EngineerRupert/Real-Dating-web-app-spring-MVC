@@ -24,7 +24,8 @@ import java.util.List;
 @Controller
 public class LookUserCards {
 
-    //контроллер отвечающий за просмотр карточек пользователей
+    // rus: контроллер отвечающий за просмотр карточек пользователей
+    // eng: controller responsible for viewing user cards
 
     @Autowired
     private FindUserCardsDao userCardsDao;
@@ -48,7 +49,8 @@ public class LookUserCards {
         return "redirect:/look-users/" + gender;
     }
 
-    // просмотр(список) карточек пользователей
+    // rus: просмотр(список) карточек пользователей
+    // eng: view (list) of user cards
     @GetMapping("/look-users/{gender}")
     public String lookUserCards(
             @PathVariable("gender") String gender,
@@ -69,15 +71,21 @@ public class LookUserCards {
 
         for (int i = 0; i < imgBase64.length; i++) {
             imgBase64[i] = Base64.encodeBase64String(listOfUserCards.get(i).getFoto());
-            // специальный класс (типа User), но только с нужными полями (из 2-х таблиц)
+
+            // rus: специальный класс (типа User), но только с нужными полями (из 2-х таблиц)
+            // eng: a special class (of the User type), but only with the required fields (from 2 tables)
             UsersCardsPageService usersCardsPageService = new UsersCardsPageService();
-            // записываем в эти поля нужные нам значения пользователя
+
+            // rus: записываем в эти поля нужные нам значения пользователя
+            // eng: we write in these fields the user values we need
             usersCardsPageService.setId(listOfUserCards.get(i).getUserId().getId());
             usersCardsPageService.setLogin(userDao.findById(listOfUserCards.get(i).getUserId().getId()).getLogin());
             usersCardsPageService.setGender(listOfUserCards.get(i).getGender());
             usersCardsPageService.setStatus(listOfUserCards.get(i).getStatus());
             usersCardsPageService.setAge(listOfUserCards.get(i).getAge());
-            //добавляем в коллекцию наших юзеров
+
+            // rus: добавляем в коллекцию наших юзеров
+            // eng: add our users to the collection
             listOfUsers.add(usersCardsPageService);
         }
 
@@ -89,7 +97,8 @@ public class LookUserCards {
         return "/usercard/show_user_cards";
     }
 
-    //переход из списка карточек пользователей в индивидуальный просмотр
+    // rus: переход из списка карточек пользователей в индивидуальный просмотр
+    // eng: transition from the list of user cards to individual view
     @GetMapping("/user/{id}/profile")
     public String lookUserProfile(
             @PathVariable("id") int id,

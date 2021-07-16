@@ -11,7 +11,8 @@ import ru.realdating.project.model.UserCard;
 @Repository
 public interface UserCardDao extends JpaRepository<UserCard, Integer> {
 
-    // DAO-репозитория отвечающая за карточку-профиль пользователя
+    // rus: DAO-репозитория отвечающая за карточку-профиль пользователя
+    // eng: DAO repository responsible for the user profile card
 
     @Query("from UserCard u where u.userId.id = :userId")
     UserCard findUserCard(@Param("userId") int id);

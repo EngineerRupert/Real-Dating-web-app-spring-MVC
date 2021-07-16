@@ -10,7 +10,8 @@ import java.util.List;
 @Repository
 public interface FindUserCardsDao extends JpaRepository <UserCard, Integer> {
 
-    // DAO-репозитория отвечающая за поиск пользователей, выводит их для просмотра
+    // rus: DAO-репозитория отвечающая за поиск пользователей, выводит их для просмотра
+    // eng: DAO repository responsible for finding users, displays them for viewing
 
     @Query("from UserCard where gender = 'Male'")
     List<UserCard> getUserCardsMale();

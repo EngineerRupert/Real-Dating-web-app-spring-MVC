@@ -6,7 +6,8 @@ import ru.realdating.project.model.UserCard;
 
 public class AvatarService {
 
-    // класс отвечающий за проверку на наличие аватарки
+    // rus: класс отвечающий за проверку на наличие аватарки
+    // eng: the class responsible for checking for the presence of an avatar
 
     @Autowired
     private UserCardDao userCardDao;
