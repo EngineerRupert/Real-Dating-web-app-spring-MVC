@@ -145,7 +145,6 @@ font-weight: bold;
 font-size: 22px;
 border: 2px solid #a13076;
 width: 160px;
-//border-radius: 5px;
 border-radius: 8px 8px 50px 50px;
 margin-bottom: 12px;
 color: white;
@@ -339,15 +338,9 @@ width: 250px;
 }
 
 .fortextcard {
-//display: inline-block;
-//padding: 0 9px;
-//text-align: center;
 width: 200px;
 height: 300px;
 font-weight: bold;
-//margin-left: 11px;
-//font-size: 19px;
-//margin-right: -6px;
 padding-bottom: 30px;
 font-size: 22px;
 }
@@ -371,7 +364,6 @@ margin-left: auto;
 margin-right: auto;
 width: 500px;
 border-radius: 5px;
-//border: 2px dotted #a13076;
 background-color: cornsilk;
 font-weight: bold;
 font-size: 14px;

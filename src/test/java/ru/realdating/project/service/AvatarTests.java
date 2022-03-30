@@ -13,7 +13,6 @@ import ru.realdating.project.dao.UserDao;
 import ru.realdating.project.model.User;
 import ru.realdating.project.model.UserCard;
 
-import javax.persistence.EntityManager;
 import java.io.*;
 
 import static org.junit.jupiter.api.Assertions.*;

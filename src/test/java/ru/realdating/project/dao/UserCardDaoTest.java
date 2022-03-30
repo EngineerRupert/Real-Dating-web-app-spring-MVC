@@ -1,5 +1,6 @@
 package ru.realdating.project.dao;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -16,16 +17,21 @@ import static org.junit.jupiter.api.Assertions.*;
 @DirtiesContext(classMode = DirtiesContext.ClassMode.AFTER_EACH_TEST_METHOD)
 public class UserCardDaoTest {
 
+    private User user;
+
     @Autowired
     private UserDao userDao;
 
     @Autowired
     private UserCardDao userCardDao;
 
+    @BeforeEach
+    void setUp() {
+        user = userDao.createUser("admin", "pass");
+    }
+
     @Test
     public void CreateAndFindUserCard() {
-        User user = userDao.createUser("admin","admin");
-
         UserCard finalUserCard = userCardDao.createUserCard(user);
 
         assertEquals(user.getId(),finalUserCard.getUserId().getId());
@@ -38,12 +44,10 @@ public class UserCardDaoTest {
 
         UserCard foundUserCard2 = userCardDao.findUserCard(57);
         assertNull(foundUserCard2);
-
     }
 
     @Test
     public void refreshMainInfoUserCard() {
-        User user = userDao.createUser("admin","admin");
         userCardDao.createUserCard(user);
         UserCard userCard = userCardDao.findUserCard(user.getId());
 
@@ -66,7 +70,6 @@ public class UserCardDaoTest {
 
     @Test
     public void addLike() {
-        User user = userDao.createUser("admin","admin");
         userCardDao.createUserCard(user);
         UserCard userCard = userCardDao.findUserCard(user.getId());
         userCardDao.addLike(userCard);
