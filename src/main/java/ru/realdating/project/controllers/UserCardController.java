@@ -33,9 +33,7 @@ public class UserCardController {
     private UserCard userCard;
 
     @GetMapping("/edit-usercard")
-    public String editUserCard(Model model,
-                               UserCardForm userCardForm,
-                               Authentication authentication) {
+    public String editUserCard(Model model, UserCardForm userCardForm, Authentication authentication) {
         model.addAttribute("userCardForm", userCardForm);
         model.addAttribute("getLogin", authentication.getName());
         return "/usercard/user_card";
@@ -45,11 +43,14 @@ public class UserCardController {
     // eng: change user card
     @PostMapping("/edit-usercard")
     public String handleEditUserCard(
-            @ModelAttribute("userCardForm")
-            @Valid UserCardForm userCardForm,
+            // внизу конструктор
+            @ModelAttribute("userCardForm") @Valid UserCardForm userCardForm,
             BindingResult bindingResult,
-            Authentication authentication) {
+            Authentication authentication,
+            Model model
+    ) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("getLogin", authentication.getName());
             return "/usercard/user_card";
         }
 
@@ -71,15 +72,11 @@ public class UserCardController {
         userCardDao.refreshMainInfoUserCard(userCard);
         return "redirect:/menu/user-menu";
     }
-    // внизу конструктор
 
     // rus: посмотреть карточку пользователя
     // eng: view user card
     @GetMapping("/look-profile")
-    public String lookProfile(
-            Model model,
-            Authentication authentication) {
-
+    public String lookProfile(Model model, Authentication authentication) {
         User user = userDao.findUserByLogin(authentication.getName());
         UserCard userCardProfile = new UserCard();
         userCardProfile = userCardDao.findUserCard(user.getId());

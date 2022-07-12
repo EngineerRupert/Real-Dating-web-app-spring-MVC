@@ -28,6 +28,4 @@ public class TestConfig {
         return Persistence.createEntityManagerFactory("TestPersistenceUnit");
     }
 
-
-
 }
