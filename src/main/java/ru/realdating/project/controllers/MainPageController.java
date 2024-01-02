@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import static java.util.Objects.*;
+
 @Controller
 @RequestMapping(path = "/")
 public class MainPageController {
@@ -14,11 +16,7 @@ public class MainPageController {
     public String index(
             Model model,
             Authentication authentication) {
-        boolean loggedIn = authentication != null && authentication.isAuthenticated();
-        String userName = "";
-        if (loggedIn) {
-            userName = authentication.getName();
-        }
+        boolean loggedIn = nonNull(authentication) && authentication.isAuthenticated();
         model.addAttribute("loggedIn", loggedIn);
         return "index";
     }
